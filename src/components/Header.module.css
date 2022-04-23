@@ -1,0 +1,145 @@
+.navbar_brand img {
+    position: relative;
+    z-index: 100;
+    height: 107px;
+    margin-top: -16px;
+}
+
+.nav_margin {
+    margin-top: -50px;
+}
+    
+.navbar-nav a {
+    color: var(--white-color);
+}
+
+.main_menu {
+    background-color: var(--orange-color) !important;
+    height: 69px;
+}
+
+.nav_item {
+    display: inline-block;
+    font-size: 20px;
+    color: var(--white-color) !important;
+    padding: 18px 21px;
+    position: relative;
+    font-weight: bold;
+}
+
+.nav-item--separate::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 39px;
+    background-color: #CC561E;
+    right: 0px;
+    transform: translateY(-100%);
+}
+
+.header__navbar-item--separate::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 39px;
+    background-color: #CC561E;
+    right: -32px;
+    top: 50%;
+    transform: translateY(-100%);
+}
+
+#navbarNavAltMarkup {
+    margin-top: -31px;
+}
+
+/* .dropdown:hover .dropdown-menu {
+    display: block;
+} */
+
+.dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    /* width: 200px; */
+    box-shadow: 0 0 10px rgb(0 0 0 / 15%);
+    /* display: none; */
+}
+
+.dropdown-menu a {
+    color: #464646;
+    text-align: center;
+    display: block;
+    padding: 10px 16px;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--beige-color);
+    color: var(--orange-color);
+}
+
+.dropdown-menu span:hover {
+    background-color: #ddd;
+    color: #fff;
+}
+
+
+.hearer_icon {
+    display: flex;
+}
+
+.header__navbar-item-login-dropdown {
+    cursor: pointer;
+    height: 2rem;
+    overflow: hidden;
+    width: 3rem;    
+}
+
+.header__navbar-item-shopping-cart {
+    margin-left: -30px;
+}
+
+.header__navbar-item-shopping-cart a  {
+    color: var(--white-color);
+}
+
+.count-cart-item {
+    background-color: var(--red-color);
+    position: absolute;
+    top: -12px;
+    left: 15px;
+}
+
+.badge-success {
+    color: var(--white-color);
+    background-color: var(--orange-red-color);
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.navbar-user-avatar-img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+}
+
+.header__navbar-item-shopping-cart {
+    position: relative;
+}

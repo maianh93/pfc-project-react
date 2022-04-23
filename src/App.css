@@ -1,0 +1,221 @@
+:root {
+    --orange-color: #FC921D;
+    --orange-red-color: #EA5C2B;
+    --red-color: #B60B28;
+    --white-color: #FFFFFF;
+    --grey-color: #808080;
+    --beige-color: #FDF2DE;
+    --green-color: #789C38;
+    --black-color: #333;
+    --alert-color: #e74c3c;
+
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.white-text {
+    color: var(--white-color);
+}
+
+.red_text {
+    color: var(--red-color);
+}
+
+.orange-text {
+    color: var(--orange-color);
+}
+
+.orange-red-text {
+    color: var(--orange-red-color);
+}
+
+.green-text {
+    color: var(--green-color);
+}
+
+.black-text {
+    color: var(--black-color);
+}
+
+.grey-text {
+    color: var(--grey-color);
+}
+
+.small-text {
+    font-size: 16px;
+}
+
+.regular-text {
+    font-size: 18px;
+}
+
+.semi-large-text {
+    font-size: 20px;
+}
+
+.large_text {
+    font-size: 26px;
+}
+
+.extra_large_text {
+    font-size: 36px;
+}
+
+.thin-text {
+    font-weight: 300;
+}
+
+.regular-bold-text {
+    font-weight: 400;
+}
+
+.bold-text {
+    font-weight: 500;
+}
+
+.extra_bold_text {
+    font-weight: 700;
+}
+
+.uppercase_text {
+    text-transform: uppercase;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+
+.btn {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--white-color);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    font-size: 16px;
+}
+
+
+.btn--orange {
+    background-color: var(--orange-color);
+    min-width: 227px;
+    border: 1px solid var(--orange-color);
+}
+
+.btn--orange:hover {
+    background-color: var(--white-color);
+    color: var(--orange-color);
+    border: 1px solid var(--orange-color);
+}
+
+.btn--orange-red {
+    background-color: var(--orange-red-color);
+}
+
+.btn--red {
+    background-color: var(--red-color);
+}
+
+.btn--white {
+    background-color: var(--white-color);
+    color: var(--orange-color);
+    border: 1px solid var(--orange-color);
+    min-width: 227px;
+}
+
+.btn--white:hover {
+    background-color: var(--orange-color);
+    color: var(--white-color);
+}
+
+.btn--disable {
+    opacity: 0.5 !important;
+    cursor: default;
+}
+
+.btn--bigger {
+    padding: 10px 10px;
+}
+
+.btn--main-menu {
+    width: 218px;
+    padding: 8px 0;
+    line-height: 14px;
+    background-image: -webkit-linear-gradient(var(--orange-color), #ce6009);
+}
+
+.btn--main-menu:hover {
+    background-image: -webkit-linear-gradient(var(--orange-color), var(--orange-color));
+    color: var(--white-color);
+}
+
+.btn--order {
+    padding: 7px 15px;
+    border: solid 1px var(--red-color);
+}
+
+.btn--order:hover {
+    border: solid 1px var(--red-color);
+    background-color: var(--white-color);
+    color: var(--red-color);
+}
+
+.btn--size {
+    background-color: var(--white-color);
+    color: var(--orange-red-color);
+    border: solid 1px var(--orange-red-color);
+    height: 36px;
+}
+
+.btn--confirm {
+    min-width: 277px;
+}
+
+.btn--login {
+    background-color: var(--red-color);
+    width: 100%;
+}
+
+.btn--login:hover {
+    opacity: 0.9;
+    color: var(--white-color);
+}
+
+.btn--checkout {
+    border: solid 1px var(--red-color);
+    background-color: var(--white-color);
+    color: var(--red-color);   
+    width: 100%; 
+}
+
+.btn--checkout:hover {
+    background-color: var(--red-color);
+    color: var(--white-color);   
+    opacity: 0.9;   
+}
+
+.input-text {
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    height: 40px;
+    background: var(--white-color);
+    border: 1px solid var(--black-color);
+    font-size: 16px;
+    color: #000;
+    width: 100%
+}
+
+ul {
+    list-style: none;
+}

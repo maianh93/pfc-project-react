@@ -1,0 +1,15 @@
+body {
+    background-color: var(--beige-color);
+}
+
+.main_menu_card_image {
+    margin-bottom: 25px;
+    height: 250px;
+    box-sizing: border-box;
+    transition: linear 0.25s;
+}
+
+.main_menu_card_image:hover {
+    transform: scale(1.08);
+}
+  

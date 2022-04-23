@@ -1,0 +1,52 @@
+.white_text {
+    color: var(--white-color);
+}
+
+.footer {
+    background-color: var(--orange-color);
+}
+
+.footer__item {
+    display: flex;
+}
+
+.footer__item + .footer__item {
+    margin-top: 10px;
+}
+
+.footer__item_icon {
+    height: 38px;
+    width: 38px;
+}
+
+.footer__item_contact {
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.footer__info p {
+    margin-top: 30px;
+}
+
+.footer__info a {
+    color: var(--white-color);
+}
+
+.footer__company {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__downloadimage {
+    height: 68px;
+    margin-left: -3px;
+}
+
+.footer__download img {
+    margin-top: 25px;
+}
+
+.footer__social {
+    cursor: pointer;
+}
