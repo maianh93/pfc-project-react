@@ -12,6 +12,7 @@ import Product from './pages/Product/Product'
 import './index.css'
 import store from './store';
 import Categories from './pages/Categories/Categories';
+import Cart from './pages/Cart/Cart'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.render(
           <Route path="/about" element={<About />} /> 
           <Route path="/promotions" element={<Promotions />} />
           <Route path="/stores" element={<Stores />} />
+          <Route path="/cart" element={<Cart />}/>
         </Route>
       </Routes>
     </BrowserRouter>

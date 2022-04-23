@@ -1,14 +1,17 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch  } from "react-redux";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useGetproductsByCategoriesIdQuery } from "../../services/product.service";
 import { selectAllCategories, selectCategoryNameById } from "../../store/reducers/categories.slice";
 import { selectAllProduct } from "../../store/reducers/product.slice";
+import { changePopupProduct } from "../../store/reducers/popup.slice"
 
 import styles from "./Product.module.css"
+import Popup from "../../components/Popup";
 
 const numberFormater = new Intl.NumberFormat('de-DE');
 
-
+ 
 const buildDescription = (obj) => {
     let a = "";
     a = obj.map(e => e.text).join(" + ");
@@ -16,6 +19,8 @@ const buildDescription = (obj) => {
 }
 
 const Product = ({ }) => {
+    const dispatch = useDispatch();
+    const [classDisable, setClassDisable] = useState("disable")
     const { categoryId } = useParams()  ;
     const { isFetching, error } = useGetproductsByCategoriesIdQuery({ id: categoryId }); // args = undefined
 
@@ -30,6 +35,11 @@ const Product = ({ }) => {
 
     if (error) {
         return <p>Oops!</p>;
+    }
+
+    const handlePopupAvailable = (product) => {
+        setClassDisable("");
+        dispatch(changePopupProduct(product))
     }
 
     return (
@@ -51,15 +61,17 @@ const Product = ({ }) => {
                                     </div>
                                     <p className="extra_bold_text green-text pt-3">{numberFormater.format(p.prices.VND.price)}đ</p>
                                 </div>
-                                <div className="btn btn--red btn--order uppercase_text small_text bold-text mb-4">Đặt mua</div>
+                                <div onClick={() => handlePopupAvailable(p)} className="btn btn--red btn--order uppercase_text small_text bold-text mb-4">Đặt mua</div>
                             </div>
                         </div>
 
                     }
                     )}
                 </div>
+                <Popup 
+                    classDisable={classDisable}
+                />
             </div>
-
         </div>
     );
 };

@@ -4,6 +4,7 @@ import productReducer from "./reducers/product.slice";
 import categoriesReducer from "./reducers/categories.slice";
 import productApi from "../services/product.service";
 import categoriesApi from "../services/categories.service";
+import popupReducer from "./reducers/popup.slice"
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         [categoriesApi.reducerPath]: categoriesApi.reducer,
         cart: cartReducer,
         products: productReducer,
-        categories: categoriesReducer
+        categories: categoriesReducer,
+        popup: popupReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat([

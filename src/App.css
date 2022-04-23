@@ -90,6 +90,9 @@ img {
     margin: auto;
 }
 
+.disable {
+    display: none !important;
+}
 
 .btn {
     text-decoration: none;
