@@ -5,6 +5,7 @@ const popupSlice = createSlice({
     initialState: null,
     reducers: {
       changePopupProduct: (state, action) => ({...action.payload}),
+      
     },
   });
 

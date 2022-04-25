@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom";
+import 'semantic-ui-css/semantic.min.css'
+import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import Home from './pages/Home/Home';
@@ -13,6 +15,8 @@ import './index.css'
 import store from './store';
 import Categories from './pages/Categories/Categories';
 import Cart from './pages/Cart/Cart'
+import Checkout from './pages/Checkout/Checkout'
+import Thankyou from './pages/Thankyou/Thankyou'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +31,8 @@ ReactDOM.render(
           <Route path="/promotions" element={<Promotions />} />
           <Route path="/stores" element={<Stores />} />
           <Route path="/cart" element={<Cart />}/>
+          <Route path="/checkout" element={<Checkout />}/>
+          <Route path="/thankyou" element={<Thankyou />}/>
         </Route>
       </Routes>
     </BrowserRouter>

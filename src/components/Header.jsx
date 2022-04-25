@@ -1,10 +1,27 @@
 
 import { Link, NavLink } from "react-router-dom";
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import { useSelector } from "react-redux";
+import { useGetAllCategoriesQuery } from "../services/categories.service";
+import { selectCategoriesWithPromotion, selectCategoriesWithoutPromotion } from "../store/reducers/categories.slice";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Header.module.css"
+import LoaderInverted from "./Loader";
 
 const Header = () => {
+  const { isFetching, error } = useGetAllCategoriesQuery();
+  const products = useSelector(selectCategoriesWithoutPromotion);
+  const promotionProducts = useSelector(selectCategoriesWithPromotion);
+  console.log(promotionProducts)
+  
+  if (isFetching) {
+    return LoaderInverted()
+  }
+
+  if (error) {
+    return <p>Oops!</p>;
+  }
+
   return (
     <div className={styles.main_menu}>
 
@@ -19,11 +36,16 @@ const Header = () => {
           <Navbar.Collapse className={`${styles.nav_margin} ${styles.nav_item}`} id="responsive-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="Thực Đơn" id="collasible-nav-dropdown">
-                <NavDropdown.Item to="/product">Product1</NavDropdown.Item>
-                <NavDropdown.Item to="/product">Product2</NavDropdown.Item>
-                <NavDropdown.Item to="/product">Product3</NavDropdown.Item>
+                {products.map((p) => {
+                  return <NavDropdown.Item>
+                    <Link to={`/categories/${p.id}`}>{p.descriptions.VN.text}</Link>
+                  </NavDropdown.Item>
+                })}
               </NavDropdown>
-              <NavLink className="nav-link" to="/promotions">Khuyến Mại</NavLink>
+              {promotionProducts.map((p) => {
+                  return <NavLink className="nav-link" to={`/categories/${p.id}`}>{promotionProducts[0].description}</NavLink>
+                })}
+              
               <NavLink className="nav-link" to="/about">Về Chúng Tôi</NavLink>
               <NavLink className="nav-link" to="/stores">Cửa Hàng</NavLink>
             </Nav>

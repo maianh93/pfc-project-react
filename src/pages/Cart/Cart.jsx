@@ -1,9 +1,13 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styles from "./Cart.module.css"
+// import { selectAllCartItems } from "../../store/reducers/cart.slice";
+import { useDispatch } from "react-redux";
 const numberFormater = new Intl.NumberFormat('de-DE');
 
+
 const ItemInCart = (props) => {
-    return (
+    return (<div className={`container ${styles.single_product} mt-5`}>
         <div className="row">
             <div className="col-lg-3 col-md-3 col-sm-12">
                 <div className={styles.image}>
@@ -14,6 +18,7 @@ const ItemInCart = (props) => {
                 <div className="mt-2">
                     <h4 className={`${styles.info_name} orange-text semi_large_text uppercase-text`}>{props.name}</h4>
                     <div className="detail ps-2">
+                        {props.description}
                     </div>
                     <p className="single-price ps-2 bold-text small-text green-text">{props.price} đ</p>
                 </div>
@@ -21,14 +26,14 @@ const ItemInCart = (props) => {
             <div className="col-lg-2 col-md-2 col-sm-12 text-center">
                 <div className="quantity">
                     <div className="d-flex">
-                        <div className="quantity-icon">
-                            <i className="far fa-minus-square extra-bold-text orange-text fa-2x"></i>
+                        <div className={styles.quantity_icon}>
+                            <i onClick={props.decrease} className="far fa-minus-square extra-bold-text orange-text fa-2x">-</i>
                         </div>
                         <div className="quantity-value">
                             <input id="" className="orange-text extra-bold-text" type="text" value="1" />
                         </div>
-                        <div className="quantity-icon">
-                            <i className="far fa-plus-square extra-bold-text orange-text fa-2x"></i>
+                        <div className={styles.quantity_icon}>
+                            <i onClick={props.increase} className="far fa-plus-square extra-bold-text orange-text fa-2x">+</i>
                         </div>
                     </div>
                 </div>
@@ -45,40 +50,60 @@ const ItemInCart = (props) => {
                     </span>
                 </div>
             </div>
-
+            </div>
         </div>
     )
 }
 
-const Cart = () => {
-    const cartState = useSelector(state => state.cart);
-    console.log(cartState)
-    console.log(cartState[0].name)
-
-    return <div className="container single-product mt-5">
-        {cartState.map((i) => <ItemInCart
-            name={i.name}
-            price={numberFormater.format(i.price)}
-            url={i.img}
-            total= "25000"
-        />
-        )}
-
-        <li className="subtotal extra-bold-text">TỔNG CỘNG <span className="extra-bold-text red-text amount-of-money">{numberFormater.format(25000)} VND</span>
+const Payment = (props) => {
+    return (
+        <div className="container">
+        <li className="subtotal extra-bold-text">TỔNG CỘNG <span className="extra-bold-text red-text amount-of-money">25000 VND</span>
         </li>
         <li className="vat">VAT<span className="red-text amount-of-money">{numberFormater.format(2500)} VND</span></li>
         <li className="discount ${hideClass}">
             GIẢM GIÁ (- {0.2 * 100}%)<span className="red-text amount-of-money">- {numberFormater.format(100)} VND</span>
         </li>
-        <li className="total">TỔNG THANH TOÁN <span className="red-text amount-of-money">{numberFormater.format(20000)} VND</span></li>
+        <li className="total">TỔNG THANH TOÁN <span className="red-text amount-of-money">25000 VND</span></li>
         <div className="row pt-5 pb-5">
             <div className="continue-order col-lg-6 col-md-6 col-sm-12">
                 <a href="../page/main-menu.html"><div className="btn btn--white uppercase-text">Tiếp tục đặt hàng</div></a>
             </div>
             <div className="confirm-btn col-lg-6 col-md-6 col-sm-12">
-                <a href="../page/checkout.html"><div id="confirm-btn" className="btn btn--orange uppercase-text">Tiến hành thanh toán</div></a>
+                <Link to="/checkout"><div id="confirm-btn" className="btn btn--orange uppercase-text">Tiến hành thanh toán</div></Link>
             </div>
         </div>
+        </div>
+    )
+}
+
+const Cart = () => {
+    const dispatch = useDispatch();
+
+    const handleIncrease = (id) => {
+        dispatch(increase(id));
+    };
+
+    const handleDecrease = (id) => {
+        dispatch(decrease(id));
+    };
+
+    const cartState = useSelector(state => state.cart);
+    
+    return <div>
+        {cartState.map((i) => <ItemInCart
+            name={i.name}
+            price={numberFormater.format(i.price)}
+            url={i.img}
+            description={i.description}
+            total= "25000"
+            decrease={() => handleDecrease(i.id)}
+            increase={() => handleIncrease(i.id)}
+        />
+        )}
+    <Payment 
+
+    />
     </div>
 }
 

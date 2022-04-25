@@ -51,7 +51,7 @@
     flex-direction: row;
 }
 
-.dialog-body__input-volumn-quantity input {
+.dialog_body_input_volumn_quantity input {
     width: 54px;
     margin: 0 15px;
 }
