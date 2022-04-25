@@ -231,7 +231,8 @@ ul {
 
 .nav-link {
     color: var(--white-color) !important;
-    font-weight: 700;
+    font-weight: 500;
+    margin: -29px 10px !important;
 }
 
 .nav-link.active {

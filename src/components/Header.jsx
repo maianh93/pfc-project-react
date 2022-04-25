@@ -38,12 +38,12 @@ const Header = () => {
               <NavDropdown title="Thực Đơn" id="collasible-nav-dropdown">
                 {products.map((p) => {
                   return <NavDropdown.Item>
-                    <Link to={`/categories/${p.id}`}>{p.descriptions.VN.text}</Link>
+                    <Link to={`/categories/${p.id}`}><div>{p.descriptions.VN.text}</div></Link>
                   </NavDropdown.Item>
                 })}
               </NavDropdown>
               {promotionProducts.map((p) => {
-                  return <NavLink className="nav-link" to={`/categories/${p.id}`}>{promotionProducts[0].description}</NavLink>
+                  return <NavLink className="nav-link" to={`/categories/${p.id}`}><div>{promotionProducts[0].description}</div></NavLink>
                 })}
               
               <NavLink className="nav-link" to="/about">Về Chúng Tôi</NavLink>
@@ -51,9 +51,6 @@ const Header = () => {
             </Nav>
             <Nav>
               <NavLink className="nav-link" to="/cart">Giỏ Hàng</NavLink>
-              <NavLink className="nav-link" to="/promotions">
-                Tài Khoản
-              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>

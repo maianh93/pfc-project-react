@@ -26,24 +26,29 @@ body {
 }
 
 .quantity input {
-      display: block;
-      width: 42px;
-      height: 50px;
-      border-radius: 4px;
-      align-items: center;
-      text-align: center;
-      margin: 0 3px;
-        border: 1px solid var(--orange-color);
+    display: block;
+    width: 42px;
+    height: 50px;
+    border-radius: 4px;
+    align-items: center;
+    text-align: center;
+    margin: 0 3px;
+    border: 1px solid var(--orange-color);
   }
 
 .quantity_icon {
-      transform: translateY(18%);
-      cursor: pointer;
+    transform: translateY(60%);
+    cursor: pointer; 
+    margin: 0 20px;
   }
+
+.close {
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: var(--orange-color);
+    cursor: pointer;
+}
   
-.quantity, .total-notional-price, .remove {
-      transform: translateY(70%);
-  }
   
 .info-name:hover {
     color: var(--orange-red-color);

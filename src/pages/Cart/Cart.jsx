@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css"
+import { clear } from "../../store/reducers/cart.slice";
 // import { selectAllCartItems } from "../../store/reducers/cart.slice";
 import { useDispatch } from "react-redux";
 const numberFormater = new Intl.NumberFormat('de-DE');
 
 
 const ItemInCart = (props) => {
-    return (<div className={`container ${styles.single_product} mt-5`}>
-        <div className="row">
+    return (<div className={`container ${styles.single_product} mt-5 pt-3`}>
+        <div className="row pt-3">
             <div className="col-lg-3 col-md-3 col-sm-12">
                 <div className={styles.image}>
                     <img src={props.url} alt="anh" />
@@ -27,26 +28,26 @@ const ItemInCart = (props) => {
                 <div className="quantity">
                     <div className="d-flex">
                         <div className={styles.quantity_icon}>
-                            <i onClick={props.decrease} className="far fa-minus-square extra-bold-text orange-text fa-2x">-</i>
+                            <i className="extra-bold-text orange-text bi bi-dash-square-fill"></i>
                         </div>
-                        <div className="quantity-value">
+                        <div className={styles.quantity}>
                             <input id="" className="orange-text extra-bold-text" type="text" value="1" />
                         </div>
                         <div className={styles.quantity_icon}>
-                            <i onClick={props.increase} className="far fa-plus-square extra-bold-text orange-text fa-2x">+</i>
+                        <i className="extra-bold-text orange-text bi bi-plus-square-fill"></i>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="col-lg-2 col-md-2 col-sm-12 text-center">
-                <div className="total-notional-price pt-5">
+                <div className={`${styles.total_notional_price} pt-5`}>
                     <span className="notional-price pt-2 bold-text semi-large-text red-text">{props.total}</span>
                 </div>
             </div>
             <div className="col-lg-1 col-md-1 col-sm-12 text-center">
                 <div className="remove pt-5">
-                    <span className="close">
-                        <i className="fas fa-trash black-text fa-2x"></i>
+                    <span className={styles.close}>
+                        <p>remove</p>
                     </span>
                 </div>
             </div>
@@ -67,7 +68,7 @@ const Payment = (props) => {
         <li className="total">TỔNG THANH TOÁN <span className="red-text amount-of-money">25000 VND</span></li>
         <div className="row pt-5 pb-5">
             <div className="continue-order col-lg-6 col-md-6 col-sm-12">
-                <a href="../page/main-menu.html"><div className="btn btn--white uppercase-text">Tiếp tục đặt hàng</div></a>
+            <Link to="/categories"><div className="btn btn--white uppercase-text">Tiếp tục đặt hàng</div></Link>
             </div>
             <div className="confirm-btn col-lg-6 col-md-6 col-sm-12">
                 <Link to="/checkout"><div id="confirm-btn" className="btn btn--orange uppercase-text">Tiến hành thanh toán</div></Link>
@@ -80,25 +81,16 @@ const Payment = (props) => {
 const Cart = () => {
     const dispatch = useDispatch();
 
-    const handleIncrease = (id) => {
-        dispatch(increase(id));
-    };
-
-    const handleDecrease = (id) => {
-        dispatch(decrease(id));
-    };
-
     const cartState = useSelector(state => state.cart);
     
     return <div>
+        <h2 className="extra-large-text red_text extra-bold-text uppercase_text text-center mt-5">Giỏ hàng</h2>
         {cartState.map((i) => <ItemInCart
             name={i.name}
             price={numberFormater.format(i.price)}
             url={i.img}
             description={i.description}
             total= "25000"
-            decrease={() => handleDecrease(i.id)}
-            increase={() => handleIncrease(i.id)}
         />
         )}
     <Payment 
