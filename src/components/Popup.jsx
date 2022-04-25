@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import styles from "./Popup.module.css"
 const numberFormater = new Intl.NumberFormat('de-DE');
+import { update } from "../store/reducers/cart.slice";
+import { useDispatch } from "react-redux";
 
 const PlusIcon = () => <i className="bi bi-plus-square"></i>;
 
@@ -8,11 +10,17 @@ const MinusIcon = () => <i className="bi bi-minus-square"></i>;
 
 
 const Popup = (props) => {
-    
+    const dispatch = useDispatch();
     const currentProductOnPopup = useSelector(state => state.popup)
 
     const handleClick = () => {
-        
+        dispatch(update({
+            id: currentProductOnPopup.id,
+            name: currentProductOnPopup.description,
+            price: currentProductOnPopup.prices.VND.price,
+            img: currentProductOnPopup.imageUrl,
+            total: 1
+        }));
     }
 
     return <div className={`${styles.dialog_body} ${props.classDisable}`}>
@@ -29,13 +37,13 @@ const Popup = (props) => {
                         <div className={styles.quantity}>
                             <div className={styles.quantity_container}>
                                 <div className={styles.quantity_icon}>
-                                    <MinusIcon />
+                                    -
                                 </div>
-                                <div className="quantity-value">
+                                <div className={styles.quantity_value}>
                                     <input className="orange-text extra-bold-text" type="text" value="1" />
                                 </div>
-                                <div className="quantity-icon">
-                                    <PlusIcon />
+                                <div className={styles.quantity_icon}>
+                                    +
                                 </div>
                             </div>
                         </div>
