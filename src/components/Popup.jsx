@@ -3,12 +3,17 @@ import styles from "./Popup.module.css"
 const numberFormater = new Intl.NumberFormat('de-DE');
 import { update } from "../store/reducers/cart.slice";
 import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 
 const Popup = (props) => {
     const dispatch = useDispatch();
     const currentProductOnPopup = useSelector(state => state.popup)
-    
+    const [currentQtty, setCurrentQtty] = useState(1)
+    let inCartQutty = useSelector(state => state.cart).find((item) => currentProductOnPopup && item.id == currentProductOnPopup.id)
+
+    inCartQutty = inCartQutty ?  inCartQutty.quantity : 1;
+    console.log("inCartQutty", inCartQutty);
     const handleUpdateProduct = () => {
         dispatch(update({
             id: currentProductOnPopup.id,
@@ -17,8 +22,17 @@ const Popup = (props) => {
             img: currentProductOnPopup.imageUrl,
             description: currentProductOnPopup.units.VN.map((e) => e.text),
             categoryId: currentProductOnPopup.categoryId,
+            quantity: currentQtty
         }));
     }
+
+    const handleChangeInput = (e) => {
+        let value = e.target.value;
+        setCurrentQtty(value);
+        console.log(value)
+    }
+
+    useEffect(() => setCurrentQtty(inCartQutty), [inCartQutty, currentProductOnPopup]);
 
     return <div className={`${styles.dialog_body} ${props.classDisable}`}>
         <div className={styles.dialog_body_input_volumn}>
@@ -36,7 +50,7 @@ const Popup = (props) => {
                             <i className="extra-bold-text orange-text bi bi-dash-square-fill"></i>
                         </div>
                         <div className={styles.quantity}>
-                            <input id="" className={`${styles.quantity_value} orange-text extra-bold-text`} type="text" value="1" />
+                            <input className={`${styles.quantity_value} orange-text extra-bold-text`} onChange={handleChangeInput} type="text" value={currentQtty} />
                         </div>
                         <div className={styles.quantity_icon}>
                         <i className="extra-bold-text orange-text bi bi-plus-square-fill"></i>

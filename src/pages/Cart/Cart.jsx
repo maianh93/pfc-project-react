@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css"
-import { clear } from "../../store/reducers/cart.slice";
-// import { selectAllCartItems } from "../../store/reducers/cart.slice";
+import { update, remove, clear } from "../../store/reducers/cart.slice";
 import { useDispatch } from "react-redux";
 const numberFormater = new Intl.NumberFormat('de-DE');
 
 
 const ItemInCart = (props) => {
+    const dispatch = useDispatch();
+    const handleRemove = (id) => dispatch(remove({id: id}));
+    
     return (<div className={`container ${styles.single_product} mt-5 pt-3`}>
         <div className="row pt-3">
             <div className="col-lg-3 col-md-3 col-sm-12">
@@ -31,7 +33,7 @@ const ItemInCart = (props) => {
                             <i className="extra-bold-text orange-text bi bi-dash-square-fill"></i>
                         </div>
                         <div className={styles.quantity}>
-                            <input id="" className="orange-text extra-bold-text" type="text" value="1" />
+                            <input id="" className="orange-text extra-bold-text" type="text" value={props.quantity} />
                         </div>
                         <div className={styles.quantity_icon}>
                         <i className="extra-bold-text orange-text bi bi-plus-square-fill"></i>
@@ -41,13 +43,13 @@ const ItemInCart = (props) => {
             </div>
             <div className="col-lg-2 col-md-2 col-sm-12 text-center">
                 <div className={`${styles.total_notional_price} pt-5`}>
-                    <span className="notional-price pt-2 bold-text semi-large-text red-text">{props.total}</span>
+                    <span className="notional-price pt-2 bold-text semi-large-text red-text">{props.total} đ</span>
                 </div>
             </div>
             <div className="col-lg-1 col-md-1 col-sm-12 text-center">
                 <div className="remove pt-5">
                     <span className={styles.close}>
-                        <p>remove</p>
+                        <p onClick={() => handleRemove(props.id)}>remove</p>
                     </span>
                 </div>
             </div>
@@ -82,15 +84,17 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const cartState = useSelector(state => state.cart);
-    
+    console.log(cartState)
     return <div>
         <h2 className="extra-large-text red_text extra-bold-text uppercase_text text-center mt-5">Giỏ hàng</h2>
         {cartState.map((i) => <ItemInCart
+            id={i.id}
             name={i.name}
             price={numberFormater.format(i.price)}
             url={i.img}
             description={i.description}
-            total= "25000"
+            total= {numberFormater.format(parseInt(i.price) * parseInt(i.quantity))}
+            quantity={i.quantity}
         />
         )}
     <Payment 

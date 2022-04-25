@@ -20,16 +20,21 @@ const cartSlice = createSlice({
             localStorage.setItem("cartState", JSON.stringify(newState));
             return newState;
         },
+        remove: (state, action) => {
+            let newState = state.filter((i) => i.id != action.payload.id);
+            localStorage.setItem("cartState", JSON.stringify(newState));
+            return newState;
 
+        },
         clear: (state) => {
-            JSON.stringify([]);
+            localStorage.setItem("cartState", JSON.stringify([]));
             return [];
         },
     },
 });
 
 export default cartSlice.reducer;
-export const { update, clear } = cartSlice.actions;
+export const { update, clear, remove } = cartSlice.actions;
 
 export const selectCount = (state) =>
     state.cart.reduce((total, item) => (total += item.quantity), 0);
