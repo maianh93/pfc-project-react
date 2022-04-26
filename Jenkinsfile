@@ -20,11 +20,11 @@ pipeline {
                 sh 'yarn install'
                 sh 'yarn build --outDir ${APP_DIR}/${SERVICE_NAME}'
             }
-	}
+		}
         
         stage('deploy') {
             steps {
-
+                sh 'END'
             }
         }
     }
