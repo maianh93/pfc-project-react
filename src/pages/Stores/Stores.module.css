@@ -4,7 +4,7 @@
 
 .store__image {
     /* position: relative; */
-    background-image: url(../public/image/cua-hang/pluto-hn/pluto-timescity.jpg);
+    background-image: url(/image/cua-hang/pluto-hn/pluto-timescity.jpg);
     height: 307px;
     background-position: center;
     background-repeat: no-repeat;
