@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         APP_DIR='/data/app/www'
-        SERVICE_NAME='pfc-react-test-jenkins'
+        SERVICE_NAME='pfc-react'
     }
     stages {
         stage('warm up') {
@@ -18,13 +18,13 @@ pipeline {
         stage('build') {
 	    steps {
                 sh 'yarn install'
-                sh 'yarn build --outDir ${APP_DIR}/${SERVICE_NAME}'
+                sh 'yarn build --outDir ${APP_DIR}/${SERVICE_NAME}/${GIT_BRANCH}'
             }
 		}
         
         stage('deploy') {
             steps {
-                sh 'END'
+                echo 'END'
             }
         }
     }
