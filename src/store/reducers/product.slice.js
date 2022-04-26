@@ -22,4 +22,3 @@ export const selectProductById = (id) => (state) =>
     state.products.find((item) => item.id == id);
 
 export const selectAllProduct = (state) => state.products
-

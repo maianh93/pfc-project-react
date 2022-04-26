@@ -43,7 +43,7 @@ const Header = () => {
                 })}
               </NavDropdown>
               {promotionProducts.map((p) => {
-                  return <NavLink className="nav-link" to={`/categories/${p.id}`}><div>{promotionProducts[0].description}</div></NavLink>
+                  return <NavLink className="nav-link" to={`/categories/${p.id}?isPromotion=true`}><div>{promotionProducts[0].description}</div></NavLink>
                 })}
               
               <NavLink className="nav-link" to="/about">Về Chúng Tôi</NavLink>
