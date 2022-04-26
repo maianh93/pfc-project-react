@@ -225,9 +225,10 @@ img {
     width: 100%
 }
 
-ul {
+ul, li {
     list-style: none;
 }
+
 
 .nav-link {
     color: var(--white-color) !important;
@@ -243,6 +244,15 @@ ul {
 .dropdown-item {
     text-align: center;
     text-transform: capitalize;
+    background-color: var(--white-color) !important;
+    padding: 10px;
+    font-weight: 500;
+}
+
+a {
     color: var(--orange-color) !important;
-    
+}
+
+a:hover {
+    color: var(--alert-color) !important;
 }

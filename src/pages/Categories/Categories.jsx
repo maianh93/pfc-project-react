@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import { useGetAllCategoriesQuery } from "../../services/categories.service";
@@ -20,6 +22,11 @@ const Categories = ({ }) => {
 
     return (
         <div>
+            <div>
+                <Helmet>
+                    <title>Pluto | Menu</title>
+                </Helmet>
+            </div>
             <div className="container">
             <h2 className="extra_large_text red_text extra-bold-text uppercase_text text-center mt-5">Thực đơn</h2>
                 <div className="row text-center">

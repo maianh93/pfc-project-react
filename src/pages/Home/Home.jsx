@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.min.css"
@@ -22,6 +23,11 @@ const HomeMenu = ({ label, img }) => {
 const Home = ({ label, img }) => {
   return (
     <section className="home">
+      <div>
+        <Helmet>
+          <title>Pluto | Trang chủ</title>
+        </Helmet>
+      </div>
       <OwlCarousel
         className="owl-theme"
         items="1"

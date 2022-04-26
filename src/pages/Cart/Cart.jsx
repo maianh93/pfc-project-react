@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css"
 import { update, remove, clear } from "../../store/reducers/cart.slice";
@@ -8,8 +10,8 @@ const numberFormater = new Intl.NumberFormat('de-DE');
 
 const ItemInCart = (props) => {
     const dispatch = useDispatch();
-    const handleRemove = (id) => dispatch(remove({id: id}));
-    
+    const handleRemove = (id) => dispatch(remove({ id: id }));
+
     return (<div className={`container ${styles.single_product} mt-5 pt-3`}>
         <div className="row pt-3">
             <div className="col-lg-3 col-md-3 col-sm-12">
@@ -36,7 +38,7 @@ const ItemInCart = (props) => {
                             <input id="" className="orange-text extra-bold-text" type="text" value={props.quantity} />
                         </div>
                         <div className={styles.quantity_icon}>
-                        <i className="extra-bold-text orange-text bi bi-plus-square-fill"></i>
+                            <i className="extra-bold-text orange-text bi bi-plus-square-fill"></i>
                         </div>
                     </div>
                 </div>
@@ -53,29 +55,29 @@ const ItemInCart = (props) => {
                     </span>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
     )
 }
 
 const Payment = (props) => {
     return (
-        <div className="container">
-        <li className="subtotal extra-bold-text">TỔNG CỘNG <span className="extra-bold-text red-text amount-of-money">25000 VND</span>
-        </li>
-        <li className="vat">VAT<span className="red-text amount-of-money">{numberFormater.format(2500)} VND</span></li>
-        <li className="discount ${hideClass}">
-            GIẢM GIÁ (- {0.2 * 100}%)<span className="red-text amount-of-money">- {numberFormater.format(100)} VND</span>
-        </li>
-        <li className="total">TỔNG THANH TOÁN <span className="red-text amount-of-money">25000 VND</span></li>
-        <div className="row pt-5 pb-5">
-            <div className="continue-order col-lg-6 col-md-6 col-sm-12">
-            <Link to="/categories"><div className="btn btn--white uppercase-text">Tiếp tục đặt hàng</div></Link>
+        <div className={`${styles.option_container} container`}>
+            <li className={`${styles.subtotal} extra-bold-text`}>TỔNG CỘNG<span className={`extra_bold_text red_text ${styles.amount_of_money}`}>{numberFormater.format(25000)} VND</span>
+            </li>
+            <li className={styles.vat}>VAT<span className={`red_text ${styles.amount_of_money}`}>{numberFormater.format(2500)} VND</span></li>
+            <li className={styles.discount}>
+                GIẢM GIÁ (- {0.2 * 100}%)<span className={`red_text ${styles.amount_of_money}`}>- {numberFormater.format(100)} VND</span>
+            </li>
+            <li className={styles.total}>TỔNG THANH TOÁN <span className={`red_text ${styles.amount_of_money}`}>25000 VND</span></li>
+            <div className="row pt-5 pb-5">
+                <div className="continue-order col-lg-6 col-md-6 col-sm-12">
+                    <Link to="/categories"><div className="btn btn--white uppercase_text">Tiếp tục đặt hàng</div></Link>
+                </div>
+                <div className={`${styles.confirm_btn} col-lg-6 col-md-6 col-sm-12`}>
+                    <Link to="/checkout"><div id="confirm-btn" className="btn btn--orange uppercase_text">Tiến hành thanh toán</div></Link>
+                </div>
             </div>
-            <div className="confirm-btn col-lg-6 col-md-6 col-sm-12">
-                <Link to="/checkout"><div id="confirm-btn" className="btn btn--orange uppercase-text">Tiến hành thanh toán</div></Link>
-            </div>
-        </div>
         </div>
     )
 }
@@ -84,22 +86,34 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const cartState = useSelector(state => state.cart);
+    function handleDeleteAll() {
+        confirm("Có chắc chắn xóa toàn bộ giỏ hàng?");
+    }
     console.log(cartState)
     return <div>
+        <div>
+            <Helmet>
+                <title>Pluto | Giỏ hàng</title>
+            </Helmet>
+        </div>
         <h2 className="extra-large-text red_text extra-bold-text uppercase_text text-center mt-5">Giỏ hàng</h2>
+        <div className="row">
+            <div className="confirm-btn col-lg-6 col-md-6 col-sm-12"></div>
+            <div className={`${styles.confirm_btn} col-lg-6 col-md-6 col-sm-12 mt-5 mb-5`}><div onClick={handleDeleteAll} id="confirm-btn" className="btn btn--white uppercase_text">Xóa giỏ hàng</div></div>
+        </div>
         {cartState.map((i) => <ItemInCart
             id={i.id}
             name={i.name}
             price={numberFormater.format(i.price)}
             url={i.img}
             description={i.description}
-            total= {numberFormater.format(parseInt(i.price) * parseInt(i.quantity))}
+            total={numberFormater.format(parseInt(i.price) * parseInt(i.quantity))}
             quantity={i.quantity}
         />
         )}
-    <Payment 
+        <Payment
 
-    />
+        />
     </div>
 }
 

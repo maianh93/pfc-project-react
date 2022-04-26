@@ -56,7 +56,7 @@ body {
 }
 
 /* --- SUMMARY --- */
-.option-container {
+.option_container {
     width: 60%;
 }
 .promotion,
@@ -103,7 +103,7 @@ body {
 	font-size: 1rem;
 }
 
-.amount-of-money {
+.amount_of_money {
 	font-size: 1.2rem;
 	text-align: right;
     float:right;
@@ -130,7 +130,7 @@ body {
     text-align: start;
 }
 
-.confirm-btn {
+.confirm_btn {
     text-align: end;
 }
 

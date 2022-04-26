@@ -7,7 +7,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
-import Promotions from './pages/Promotions/Promotions';
 import Stores from './pages/Stores/Stores';
 import Layout from './components/Layout';
 import Product from './pages/Product/Product'
@@ -28,7 +27,6 @@ ReactDOM.render(
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/:categoryId" element={<Product />} />
           <Route path="/about" element={<About />} /> 
-          <Route path="/promotions" element={<Promotions />} />
           <Route path="/stores" element={<Stores />} />
           <Route path="/cart" element={<Cart />}/>
           <Route path="/checkout" element={<Checkout />}/>
