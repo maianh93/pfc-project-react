@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom"
 import React from 'react';
+import { useDispatch } from "react-redux";
+import { clear } from "../../store/reducers/cart.slice";
 import { Helmet } from 'react-helmet';
 import styles from "./Checkout.module.css"
 
 const Checkout = () => {
+    const dispatch = useDispatch();
+    const handleOrder = () => {
+        dispatch(clear());
+    }
     return <div className="container">
         <div>
             <Helmet>
@@ -132,15 +138,7 @@ const Checkout = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="container">
-                            <div className="row pt-2">
-                                <div className="col-lg-3 col-md-3 col-sm-12">
-                                </div>
-                                <div className="col-lg-9 col-md-9 col-sm-12">
-                                    <Link to="/thankyou"><div className="btn btn--login bold-text">Đặt hàng</div></Link>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -216,6 +214,15 @@ const Checkout = () => {
                                         <td className={`col-lg-3 col-md-3 col-sm-12 bold-text ${styles.price_right}`}>310.000đ</td>
                                     </tr>
                                 </table>
+                                <div className="container">
+                            <div className="row pt-2">
+                                <div className="col-lg-9 col-md-9 col-sm-12">
+                                </div>
+                                <div className="col-lg-3 col-md-3 col-sm-12">
+                                    <Link to="/thankyou"><div onClick={handleOrder} className="btn btn--login bold-text">Đặt hàng</div></Link>
+                                </div>
+                            </div>
+                        </div>
                             </div>
                         </div>
                     </div>

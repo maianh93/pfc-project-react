@@ -43,11 +43,7 @@ export const selectCount = (state) =>
 
 export const selectTotalBill = (state) =>
     state.cart
-        .map((item) => ({
-            quantity: item.quantity,
-            product: state.products.find((p) => p.id == item.id),
-        }))
         .reduce(
-            (total, item) => (total += item.quantity * item.product.price),
+            (total, item) => (total += item.quantity * item.price),
             0
         );

@@ -141,6 +141,14 @@ img {
     min-width: 227px;
 }
 
+.textarea-text {
+    width: 100%;
+}
+
+.empty_space {
+    height: 400px;
+}
+
 .btn--white:hover {
     background-color: var(--orange-color);
     color: var(--white-color);
