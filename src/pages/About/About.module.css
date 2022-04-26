@@ -3,7 +3,7 @@ body {
 }
 
 .home__main_image {
-  background-image: url(../public/image/ve-chung-toi/banner.jpg);
+  background-image: url(/image/ve-chung-toi/banner.jpg);
   height: 606px;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -60,7 +60,7 @@ body {
 
 
 .timeline__image_2003 {
-    background-image: url(../public/image/ve-chung-toi/love-that-chickend.jfif);
+    background-image: url(/image/ve-chung-toi/love-that-chickend.jfif);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -68,7 +68,7 @@ body {
 }
 
 .timeline__image_2005 {
-    background-image: url(../public/image/ve-chung-toi/pluto-hodacdi.png);
+    background-image: url(/image/ve-chung-toi/pluto-hodacdi.png);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -76,7 +76,7 @@ body {
 }
 
 .timeline__image_2012 {
-    background-image: url(../public/image/ve-chung-toi/company.jpg);
+    background-image: url(/image/ve-chung-toi/company.jpg);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -84,7 +84,7 @@ body {
 }
 
 .timeline__image_2019 {
-    background-image: url(../public/image/ve-chung-toi/pluto-leduan.jpg);
+    background-image: url(/image/ve-chung-toi/pluto-leduan.jpg);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -92,7 +92,7 @@ body {
 }
 
 .timeline__image_2021 {
-    background-image: url(../public/image/ve-chung-toi/tuyen-dung.png);
+    background-image: url(/image/ve-chung-toi/tuyen-dung.png);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
