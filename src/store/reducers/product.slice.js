@@ -3,13 +3,14 @@ import productApi from "../../services/product.service";
 
 const productSlice = createSlice({
     name: "products",
-    initialState: [],
+    initialState: {},
     reducers: {},
     extraReducers: (builder) => {
         builder.addMatcher(
             productApi.endpoints.getproductsByCategoriesId.matchFulfilled,
             (state, action) => {
-                return action.payload;
+                let categoryId = action.meta.arg.originalArgs.id;
+                return {...state, [categoryId] : action.payload};
             }
         );
     },

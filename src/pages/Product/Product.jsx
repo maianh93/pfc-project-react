@@ -1,14 +1,20 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch  } from "react-redux";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useGetproductsByCategoriesIdQuery } from "../../services/product.service";
 import { selectAllCategories, selectCategoryNameById } from "../../store/reducers/categories.slice";
 import { selectAllProduct } from "../../store/reducers/product.slice";
+import { changePopupProduct } from "../../store/reducers/popup.slice"
 
 import styles from "./Product.module.css"
+import Popup from "../../components/Popup";
+import LoaderInverted from "../../components/Loader";
 
 const numberFormater = new Intl.NumberFormat('de-DE');
 
 
+
+ 
 const buildDescription = (obj) => {
     let a = "";
     a = obj.map(e => e.text).join(" + ");
@@ -16,28 +22,34 @@ const buildDescription = (obj) => {
 }
 
 const Product = ({ }) => {
+    const dispatch = useDispatch();
+    const [classDisable, setClassDisable] = useState("disable")
     const { categoryId } = useParams()  ;
     const { isFetching, error } = useGetproductsByCategoriesIdQuery({ id: categoryId }); // args = undefined
-
     const products = useSelector(selectAllProduct);
     const categoriesName = useSelector(selectCategoryNameById(categoryId))
 
     console.log(categoriesName)
 
     if (isFetching) {
-        return <p>Loading...</p>;
+        return LoaderInverted()
     }
 
     if (error) {
-        return <p>Oops!</p>;
+        return <p>Error!</p>;
+    }
+
+    const handlePopupAvailable = (product) => {
+        setClassDisable("");
+        dispatch(changePopupProduct(product))
     }
 
     return (
         <div>
             <div className="container">
-                <h2 className="extra-large-text red_text extra_bold_text uppercase_text text-center mt-5">{categoriesName}</h2>
+                <h2 className="extra-large-text red_text extra-bold-text uppercase_text text-center mt-5">{categoriesName}</h2>
                 <div className="row text-center">
-                    {products.map((p) => {
+                    {products[categoryId].map((p) => {
                         {console.log(p)}
                         return <div key={p.id} className="col-lg-4 col-md-4 col-sm-12">
                             <div className={`${styles.detail_menu_card} mx-auto mt-5`}>
@@ -49,17 +61,19 @@ const Product = ({ }) => {
                                     <div className={styles.detail_menu_info_content}>
                                         <p className={`small-text regular-bold-text grey-text pe-3 ps-3`}>{buildDescription(p.units.VN)}</p>
                                     </div>
-                                    <p className="extra_bold_text green-text pt-3">{numberFormater.format(p.prices.VND.price)}đ</p>
+                                    <p className="extra-bold-text green-text pt-3">{numberFormater.format(p.prices.VND.price)}đ</p>
                                 </div>
-                                <div className="btn btn--red btn--order uppercase_text small_text bold-text mb-4">Đặt mua</div>
+                                <div onClick={() => handlePopupAvailable(p)} className="btn btn--red btn--order uppercase_text small_text bold-text mb-4">Đặt mua</div>
                             </div>
                         </div>
 
                     }
                     )}
                 </div>
+                <Popup 
+                    classDisable={classDisable}
+                />
             </div>
-
         </div>
     );
 };

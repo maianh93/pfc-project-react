@@ -119,7 +119,7 @@ const Stores = () => {
     return (
         <section className={styles.store}>
             <div className={styles.store__image}>
-                <p className={`extra_bold_text large_text red_text uppercase_text text-center`}>Hệ thống {stores.length} cửa hàng trên toàn
+                <p className={`extra-bold-text large_text red_text uppercase_text text-center`}>Hệ thống {stores.length} cửa hàng trên toàn
                     quốc</p>
             </div>
             <div className="container pt-5">

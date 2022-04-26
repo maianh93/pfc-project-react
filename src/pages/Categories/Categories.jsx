@@ -4,14 +4,15 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import { useGetAllCategoriesQuery } from "../../services/categories.service";
 import { selectCategoriesWithoutPromotion } from "../../store/reducers/categories.slice";
 import styles from "./Categories.module.css"
+import LoaderInverted from "../../components/Loader";
 
 const Categories = ({ }) => {
     const { isFetching, error } = useGetAllCategoriesQuery(); // args = undefined
     const products = useSelector(selectCategoriesWithoutPromotion);
 
     if (isFetching) {
-        return <p>Loading...</p>;
-    }
+        return LoaderInverted()
+      }
 
     if (error) {
         return <p>Oops!</p>;
@@ -20,7 +21,7 @@ const Categories = ({ }) => {
     return (
         <div>
             <div className="container">
-            <h2 className="extra_large_text red_text extra_bold_text uppercase_text text-center mt-5">Thực đơn</h2>
+            <h2 className="extra_large_text red_text extra-bold-text uppercase_text text-center mt-5">Thực đơn</h2>
                 <div className="row text-center">
                     {products.map((p) => {
                         return <div key={p.id} className="col-lg-4 col-md-4 col-sm-12 mt-5 mb-3">
