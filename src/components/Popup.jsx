@@ -2,9 +2,12 @@ import { useSelector } from "react-redux";
 import styles from "./Popup.module.css"
 const numberFormater = new Intl.NumberFormat('de-DE');
 import { update } from "../store/reducers/cart.slice";
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { changePopupProduct } from "../store/reducers/popup.slice"
+import { style } from "@mui/system";
 
 
 const Popup = (props) => {
@@ -23,20 +26,34 @@ const Popup = (props) => {
             img: currentProductOnPopup.imageUrl,
             description: currentProductOnPopup.units.VN.map((e) => e.text),
             categoryId: currentProductOnPopup.categoryId,
-            quantity: currentQtty
+            quantity: Number(currentQtty)
         }));
-        dispatch(changePopupProduct({...currentProductOnPopup, isDisable: true}))
+        dispatch(changePopupProduct({ ...currentProductOnPopup, isDisable: true }))
     }
 
     const handleChangeInput = (e) => {
         let value = e.target.value;
-        setCurrentQtty(value);
+        var reg = /^\d+$/;
+        reg.test(value ? value.toString() : "")
+            && Number(value) > 0
+            && setCurrentQtty(value);
         console.log(value)
     }
 
     const handlePopupClickOut = () => {
-        dispatch(changePopupProduct({...currentProductOnPopup, isDisable: true}))
+        dispatch(changePopupProduct({ ...currentProductOnPopup, isDisable: true }))
     }
+
+    const handleIncrease = () => {
+        let newQtty = Number(currentQtty) + 1;
+        setCurrentQtty(Math.max(newQtty, 1))
+    }
+
+    const handleDecrease = () => {
+        let newQtty = Number(currentQtty) - 1;
+        setCurrentQtty(Math.max(newQtty, 1))
+    }
+
 
     useEffect(() => setCurrentQtty(inCartQutty), [inCartQutty, currentProductOnPopup]);
 
@@ -56,14 +73,14 @@ const Popup = (props) => {
                         <div className={`col-lg-6 col-md-6 col-sm-12 ${styles.dialog_body_input_volumn_quantity} d-flex`}>
                             <div className="quantity">
                                 <div className="d-flex">
-                                    <div className={styles.quantity_icon}>
-                                        <i className="extra-bold-text orange-text bi bi-dash-square-fill"></i>
+                                    <div className={styles.cursor}>
+                                    <IndeterminateCheckBoxIcon fontSize="large" onClick={handleDecrease} className="extra-bold-text orange-text mt-2"/>
                                     </div>
                                     <div className={styles.quantity}>
                                         <input className={`${styles.quantity_value} orange-text extra-bold-text`} onChange={handleChangeInput} type="text" value={currentQtty} />
                                     </div>
-                                    <div className={styles.quantity_icon}>
-                                        <i className="extra-bold-text orange-text bi bi-plus-square-fill"></i>
+                                    <div className={styles.cursor}>
+                                    <AddBoxIcon fontSize="large" onClick={handleIncrease} className="extra-bold-text orange-text mt-2"/>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +94,9 @@ const Popup = (props) => {
                         <div className="uppercase-text semi-large-text bold-text text-center">Tổng tiền:</div>
                     </div>
                     <div id="pop-up-price" className="col-lg-6 col-md-6 col-sm-12">
-                        <div className="pop-up-price semi-large-text bold-text green-text">{numberFormater.format(currentProductOnPopup ? currentProductOnPopup.prices.VND.price : 0)}đ</div>
+                        <div className="pop-up-price semi-large-text bold-text green-text">
+                            {numberFormater.format(currentProductOnPopup ? currentProductOnPopup.prices.VND.price * Number(currentQtty) : 0)} đ
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,16 +1,39 @@
 import { useSelector } from "react-redux";
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
+import DeleteIcon from '@mui/icons-material/Delete';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css"
 import { update, remove, clear } from "../../store/reducers/cart.slice";
 import { useDispatch } from "react-redux";
+import { selectTotalBill } from "../../store/reducers/cart.slice";
 const numberFormater = new Intl.NumberFormat('de-DE');
 
 
 const ItemInCart = (props) => {
     const dispatch = useDispatch();
     const handleRemove = (id) => dispatch(remove({ id: id }));
+
+
+    const handleChangeInput = (e) => {
+        let value = e.target.value;
+        var reg = /^\d+$/;
+        reg.test(value ? value.toString() : "")
+            && Number(value) > 0
+            && dispatch(update({ ...props.object, quantity: Number(value) }))
+    }
+
+    const handleIncrease = () => {
+        let newQtty = Number(props.object.quantity) + 1;
+        dispatch(update({ ...props.object, quantity: Math.max(newQtty, 1) }))
+    }
+
+    const handleDecrease = () => {
+        let newQtty = Number(props.object.quantity) - 1;
+        dispatch(update({ ...props.object, quantity: Math.max(newQtty, 1) }))
+    }
 
     return (<div className={`container ${styles.single_product} mt-5 pt-3`}>
         <div className="row pt-3">
@@ -29,29 +52,29 @@ const ItemInCart = (props) => {
                 </div>
             </div>
             <div className="col-lg-2 col-md-2 col-sm-12 text-center">
-                <div className="quantity">
+                <div className="quantity mt-3">
                     <div className="d-flex">
                         <div className={styles.quantity_icon}>
-                            <i className="extra-bold-text orange-text bi bi-dash-square-fill"></i>
+                            <IndeterminateCheckBoxIcon  fontSize="large" className="extra-bold-text orange-text" onClick={handleDecrease} />
                         </div>
                         <div className={styles.quantity}>
-                            <input id="" className="orange-text extra-bold-text" type="text" value={props.quantity} />
+                            <input id="" onChange={handleChangeInput} className="orange-text extra-bold-text" type="text" value={props.quantity} />
                         </div>
                         <div className={styles.quantity_icon}>
-                            <i className="extra-bold-text orange-text bi bi-plus-square-fill"></i>
+                            <AddBoxIcon  fontSize="large" className="extra-bold-text orange-text" onClick={handleIncrease} />
                         </div>
                     </div>
                 </div>
             </div>
             <div className="col-lg-2 col-md-2 col-sm-12 text-center">
-                <div className={`${styles.total_notional_price} pt-5`}>
-                    <span className="notional-price pt-2 bold-text semi-large-text red-text">{props.total} đ</span>
+                <div className={`${styles.total_notional_price} pt-5 mt-4`}>
+                    <span className="notional-price pt-2 bold-text semi-large-text red_text">{props.total} đ</span>
                 </div>
             </div>
             <div className="col-lg-1 col-md-1 col-sm-12 text-center">
-                <div className="remove pt-5">
+                <div className="remove pt-5 mt-4">
                     <span className={styles.close}>
-                        <p onClick={() => handleRemove(props.id)}>remove</p>
+                        <DeleteIcon fontSize="large" onClick={() => handleRemove(props.id)} />
                     </span>
                 </div>
             </div>
@@ -61,9 +84,11 @@ const ItemInCart = (props) => {
 }
 
 const Payment = (props) => {
+    // const dispatch = useDispatch();
+    // const totalBill = dispatch(selectTotalBill)
     return (
         <div className={`${styles.option_container} container`}>
-            <li className={`${styles.subtotal} extra-bold-text`}>TỔNG CỘNG<span className={`extra_bold_text red_text ${styles.amount_of_money}`}>{numberFormater.format(25000)} VND</span>
+            <li className={`${styles.subtotal} extra-bold-text`}>TỔNG CỘNG<span className={`extra_bold_text red_text ${styles.amount_of_money}`}>{numberFormater.format(50000)} VND</span>
             </li>
             <li className={styles.vat}>VAT<span className={`red_text ${styles.amount_of_money}`}>{numberFormater.format(2500)} VND</span></li>
             <li className={styles.discount}>
@@ -87,7 +112,8 @@ const Cart = () => {
 
     const cartState = useSelector(state => state.cart);
     function handleDeleteAll() {
-        confirm("Có chắc chắn xóa toàn bộ giỏ hàng?");
+        confirm("Có chắc chắn xóa toàn bộ giỏ hàng?")
+            && dispatch(clear());
     }
     console.log(cartState)
     return <div>
@@ -97,10 +123,13 @@ const Cart = () => {
             </Helmet>
         </div>
         <h2 className="extra-large-text red_text extra-bold-text uppercase_text text-center mt-5">Giỏ hàng</h2>
-        <div className="row">
-            <div className="confirm-btn col-lg-6 col-md-6 col-sm-12"></div>
-            <div className={`${styles.confirm_btn} col-lg-6 col-md-6 col-sm-12 mt-5 mb-5`}><div onClick={handleDeleteAll} id="confirm-btn" className="btn btn--white uppercase_text">Xóa giỏ hàng</div></div>
+        <div className="container">
+            <div className="row">
+                <div className="confirm-btn col-lg-6 col-md-6 col-sm-12"></div>
+                <div className={`${styles.confirm_btn} col-lg-6 col-md-6 col-sm-12`}><div onClick={handleDeleteAll} id="confirm-btn" className="btn btn--white uppercase_text">Xóa giỏ hàng</div></div>
+            </div>
         </div>
+
         {cartState.map((i) => <ItemInCart
             id={i.id}
             name={i.name}
@@ -109,6 +138,7 @@ const Cart = () => {
             description={i.description}
             total={numberFormater.format(parseInt(i.price) * parseInt(i.quantity))}
             quantity={i.quantity}
+            object={i}
         />
         )}
         <Payment

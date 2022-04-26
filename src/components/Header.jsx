@@ -10,9 +10,11 @@ import styles from "./Header.module.css"
 import LoaderInverted from "./Loader";
 import { useEffect } from "react";
 import { useGetproductsByCategoriesIdQuery } from "../services/product.service";
+import { selectCount } from "../store/reducers/cart.slice";
 
 const Header = () => {
   const { isFetching, isError } = useGetAllCategoriesQuery();
+  const count = useSelector(selectCount);
   const promotionQueryResult = useGetPromotionQuery(); 
   const products = useSelector(selectCategoriesWithoutPromotion);
   const promotionCategories = useSelector(state => state.promotions);
@@ -53,12 +55,12 @@ const Header = () => {
               <NavLink className="nav-link" to="/stores">Cửa Hàng</NavLink>
             </Nav>
             <Nav>
-              <NavLink className="nav-link" to="/cart">Giỏ Hàng</NavLink>
+              <NavLink className="nav-link" to="/cart"><i class="bi bi-cart-fill">{count}</i></NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
+                
     </div>
   );
 };
