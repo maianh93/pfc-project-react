@@ -10,7 +10,7 @@ const HomeMenu = ({ label, img }) => {
   return (
     <div className={`${styles.home_main_menu_card} mx-auto`}>
       <div className={styles.home_main_menu_card_content}>
-        <h3 className="white-text text-center semi-large-text">{label}</h3>
+        <h3 className="white-text text-center semi-large-text bold-text">{label}</h3>
       </div>
       <div className={styles.home_main_menu_card_image}>
         <img src={img} alt={label} />

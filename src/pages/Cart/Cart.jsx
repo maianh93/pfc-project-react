@@ -1,0 +1,106 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import styles from "./Cart.module.css"
+import { update, remove, clear } from "../../store/reducers/cart.slice";
+import { useDispatch } from "react-redux";
+const numberFormater = new Intl.NumberFormat('de-DE');
+
+
+const ItemInCart = (props) => {
+    const dispatch = useDispatch();
+    const handleRemove = (id) => dispatch(remove({id: id}));
+    
+    return (<div className={`container ${styles.single_product} mt-5 pt-3`}>
+        <div className="row pt-3">
+            <div className="col-lg-3 col-md-3 col-sm-12">
+                <div className={styles.image}>
+                    <img src={props.url} alt="anh" />
+                </div>
+            </div>
+            <div className="col-lg-4 col-md-4 col-sm-12">
+                <div className="mt-2">
+                    <h4 className={`${styles.info_name} orange-text semi_large_text uppercase-text`}>{props.name}</h4>
+                    <div className="detail ps-2">
+                        {props.description}
+                    </div>
+                    <p className="single-price ps-2 bold-text small-text green-text">{props.price} đ</p>
+                </div>
+            </div>
+            <div className="col-lg-2 col-md-2 col-sm-12 text-center">
+                <div className="quantity">
+                    <div className="d-flex">
+                        <div className={styles.quantity_icon}>
+                            <i className="extra-bold-text orange-text bi bi-dash-square-fill"></i>
+                        </div>
+                        <div className={styles.quantity}>
+                            <input id="" className="orange-text extra-bold-text" type="text" value={props.quantity} />
+                        </div>
+                        <div className={styles.quantity_icon}>
+                        <i className="extra-bold-text orange-text bi bi-plus-square-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-2 col-md-2 col-sm-12 text-center">
+                <div className={`${styles.total_notional_price} pt-5`}>
+                    <span className="notional-price pt-2 bold-text semi-large-text red-text">{props.total} đ</span>
+                </div>
+            </div>
+            <div className="col-lg-1 col-md-1 col-sm-12 text-center">
+                <div className="remove pt-5">
+                    <span className={styles.close}>
+                        <p onClick={() => handleRemove(props.id)}>remove</p>
+                    </span>
+                </div>
+            </div>
+            </div>
+        </div>
+    )
+}
+
+const Payment = (props) => {
+    return (
+        <div className="container">
+        <li className="subtotal extra-bold-text">TỔNG CỘNG <span className="extra-bold-text red-text amount-of-money">25000 VND</span>
+        </li>
+        <li className="vat">VAT<span className="red-text amount-of-money">{numberFormater.format(2500)} VND</span></li>
+        <li className="discount ${hideClass}">
+            GIẢM GIÁ (- {0.2 * 100}%)<span className="red-text amount-of-money">- {numberFormater.format(100)} VND</span>
+        </li>
+        <li className="total">TỔNG THANH TOÁN <span className="red-text amount-of-money">25000 VND</span></li>
+        <div className="row pt-5 pb-5">
+            <div className="continue-order col-lg-6 col-md-6 col-sm-12">
+            <Link to="/categories"><div className="btn btn--white uppercase-text">Tiếp tục đặt hàng</div></Link>
+            </div>
+            <div className="confirm-btn col-lg-6 col-md-6 col-sm-12">
+                <Link to="/checkout"><div id="confirm-btn" className="btn btn--orange uppercase-text">Tiến hành thanh toán</div></Link>
+            </div>
+        </div>
+        </div>
+    )
+}
+
+const Cart = () => {
+    const dispatch = useDispatch();
+
+    const cartState = useSelector(state => state.cart);
+    console.log(cartState)
+    return <div>
+        <h2 className="extra-large-text red_text extra-bold-text uppercase_text text-center mt-5">Giỏ hàng</h2>
+        {cartState.map((i) => <ItemInCart
+            id={i.id}
+            name={i.name}
+            price={numberFormater.format(i.price)}
+            url={i.img}
+            description={i.description}
+            total= {numberFormater.format(parseInt(i.price) * parseInt(i.quantity))}
+            quantity={i.quantity}
+        />
+        )}
+    <Payment 
+
+    />
+    </div>
+}
+
+export default Cart
