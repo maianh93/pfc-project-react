@@ -4,27 +4,30 @@ import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
 import { useSelector } from "react-redux";
 import { useGetAllCategoriesQuery } from "../services/categories.service";
 import { selectCategoriesWithPromotion, selectCategoriesWithoutPromotion } from "../store/reducers/categories.slice";
+import { useGetPromotionQuery } from "../services/promotion.service";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Header.module.css"
 import LoaderInverted from "./Loader";
+import { useEffect } from "react";
+import { useGetproductsByCategoriesIdQuery } from "../services/product.service";
 
 const Header = () => {
-  const { isFetching, error } = useGetAllCategoriesQuery();
+  const { isFetching, isError } = useGetAllCategoriesQuery();
+  const promotionQueryResult = useGetPromotionQuery(); 
   const products = useSelector(selectCategoriesWithoutPromotion);
-  const promotionProducts = useSelector(selectCategoriesWithPromotion);
-  console.log(promotionProducts)
+  const promotionCategories = useSelector(state => state.promotions);
+  console.log(promotionCategories)
   
-  if (isFetching) {
+  if (isFetching || promotionQueryResult.isFetching) {
     return LoaderInverted()
   }
 
-  if (error) {
+  if (isError || promotionQueryResult.isError) {
     return <p>Oops!</p>;
   }
 
   return (
     <div className={styles.main_menu}>
-
       <Navbar collapseOnSelect expand="lg">
         <Container>
           <Link to="/">
@@ -42,8 +45,8 @@ const Header = () => {
                   </NavDropdown.Item>
                 })}
               </NavDropdown>
-              {promotionProducts.map((p) => {
-                  return <NavLink className="nav-link" to={`/categories/${p.id}?isPromotion=true`}><div>{promotionProducts[0].description}</div></NavLink>
+              {promotionCategories.map((p) => {
+                  return <NavLink className="nav-link" to={`/categories/${p.id}`}><div>{promotionCategories[0].description}</div></NavLink>
                 })}
               
               <NavLink className="nav-link" to="/about">Về Chúng Tôi</NavLink>

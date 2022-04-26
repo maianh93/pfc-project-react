@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { useGetAllCategoriesQuery } from "../services/categories.service";
 
 import LoaderInverted from "./Loader";
+import { useSelector } from "react-redux";
 
 const Layout = () => {
 
