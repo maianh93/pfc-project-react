@@ -15,13 +15,6 @@ import LoaderInverted from "../../components/Loader";
 
 const numberFormater = new Intl.NumberFormat('de-DE');
 
-
-function useQuery() {
-    const { search } = useLocation();
-
-    return React.useMemo(() => new URLSearchParams(search), [search]);
-}
-
 const buildDescription = (obj) => {
     let a = "";
     a = obj.map(e => e.text).join(" + ");
@@ -29,32 +22,28 @@ const buildDescription = (obj) => {
 }
 
 const Product = ({ }) => {
-    let query = useQuery();
-    const promotionProducts = useSelector(selectCategoriesWithPromotion);
-    console.log(promotionProducts)
+    const promotionCategories = useSelector(state => state.promotions);
+    const popupProduct = useSelector(state => state.popup)
     const dispatch = useDispatch();
-    const [classDisable, setClassDisable] = useState("disable")
     const { categoryId } = useParams();
-    const { isFetching, error } = useGetproductsByCategoriesIdQuery({ id: categoryId });
+    const { isFetching, isError } = useGetproductsByCategoriesIdQuery({ id: categoryId });
+    const promotionProductQueryResult = useGetproductsByCategoriesIdQuery({id: promotionCategories[0].id})
 
     const products = useSelector(selectAllProduct);
     const categoriesName = useSelector(selectCategoryNameById(categoryId))
-    const queryParam = query.get("isPromotion")
+    console.log("promotionCategories", promotionCategories)
+    console.log("products", products)
 
-
-    console.log(queryParam)
-
-    if (isFetching) {
+    if (isFetching || promotionProductQueryResult.isFetching) {
         return LoaderInverted()
     }
 
-    if (error) {
+    if (isError || promotionProductQueryResult.isError) {
         return <p>Error!</p>;
     }
 
     const handlePopupAvailable = (product) => {
-        setClassDisable("");
-        dispatch(changePopupProduct(product))
+        dispatch(changePopupProduct({...product, isDisable: false}))
     }
 
     return (
@@ -86,10 +75,10 @@ const Product = ({ }) => {
                     }
                     )}
                 </div>
-                {!queryParam && <div>
+                {!(parseInt(categoryId) === promotionCategories[0].id) && <div>
                     <h2 className="container extra_large_text black-text extra_bold_text uppercase_text mt-5">Sản phẩm đang khuyến mãi</h2>
                     <div className="row text-center">
-                        {products[promotionProducts[0].id].map((p) => {
+                        {products[promotionCategories[0].id].map((p) => {
                             return <div key={p.id} className="col-lg-4 col-md-4 col-sm-12">
                                 <div className={`${styles.detail_menu_card} mx-auto mt-5`}>
                                     <div className={styles.detail_menu_card_image}>
@@ -111,7 +100,7 @@ const Product = ({ }) => {
                 </div>}
 
                 <Popup
-                    classDisable={classDisable}
+                    classDisable={popupProduct ? popupProduct.isDisable : true}
                 />
             </div>
         </div>

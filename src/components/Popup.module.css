@@ -13,6 +13,10 @@
     opacity: 0.4;
 }
 
+.cursor {
+    cursor: pointer;
+}
+
 .dialog_body {
     position: fixed;
     min-width: 595px;

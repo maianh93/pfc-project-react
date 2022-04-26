@@ -8,4 +8,9 @@ const categoriesBaseQuery = fetchBaseQuery({
   baseUrl: "http://phungmaianh.ddns.net/pfc/biz/categories/search/",
 });
 
-export { productsByCategoriesBaseQuery, categoriesBaseQuery };
+const promotionBaseQuery = fetchBaseQuery({
+  baseUrl: "http://phungmaianh.ddns.net/pfc/biz/categories/",
+});
+
+
+export { productsByCategoriesBaseQuery, categoriesBaseQuery, promotionBaseQuery };
