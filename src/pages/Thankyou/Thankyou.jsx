@@ -12,7 +12,7 @@ const Thankyou = () => {
             </div>
             <div class="container">
                 <div class="km-3__image">
-                    <img src="../public/image/carousel-delivery.webp" alt="" />
+                    <img src="/image/carousel-delivery.webp" alt="" />
                 </div>
                 <div class="container ps-5 pe-5 mt-5 text-center">
                     <h2 class="extra-large-text orange-text">CẢM ƠN BẠN ĐÃ ĐẶT HÀNG</h2>
