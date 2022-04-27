@@ -1,7 +1,7 @@
 .dialog {
     background-color: var(--beige-color);
     position: absolute;
-    height: 1300px;
+    height: 1320px;
     top: 0px;
     left: 0;
     bottom: 0;
@@ -11,6 +11,8 @@
     align-items: center;
     justify-content: center;
     opacity: 0.4;
+    filter: brightness(0.4);
+    transition: opacity 0.2s ease;
 }
 
 .cursor {
@@ -28,6 +30,7 @@
     background-color: #fff;
     border: 1px solid var(--orange-red-color);
     z-index: 1000;
+    transition: opacity 0.2s ease;
 }
 
 .beige_background {
