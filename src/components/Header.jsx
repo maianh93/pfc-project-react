@@ -15,16 +15,15 @@ import { selectCount } from "../store/reducers/cart.slice";
 const Header = () => {
   const { isFetching, isError } = useGetAllCategoriesQuery();
   const count = useSelector(selectCount);
-  const promotionQueryResult = useGetPromotionQuery(); 
   const products = useSelector(selectCategoriesWithoutPromotion);
   const promotionCategories = useSelector(state => state.promotions);
   console.log(promotionCategories)
   
-  if (isFetching || promotionQueryResult.isFetching) {
+  if (isFetching ) {
     return LoaderInverted()
   }
 
-  if (isError || promotionQueryResult.isError) {
+  if (isError) {
     return <p>Oops!</p>;
   }
 
