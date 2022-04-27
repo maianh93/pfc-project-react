@@ -54,9 +54,9 @@ const ItemInCart = (props) => {
                 <div className="mt-2">
                     <h4 className={`${styles.info_name} orange-text semi_large_text uppercase-text`}>{props.name}</h4>
                     <div className="detail ps-2">
-                        {props.description}
+                        {props.description.map(i => <p>{i}</p>)}
                     </div>
-                    <p className="single-price ps-2 bold-text small-text green-text">{props.price} đ</p>
+                    <p className="single-price ps-2 bold-text small-text green-text mt-2 mb-3">{props.price} đ</p>
                 </div>
             </div>
             <div className="col-lg-2 col-md-2 col-sm-12 text-center">

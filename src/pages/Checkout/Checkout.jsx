@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom"
 import React from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clear } from "../../store/reducers/cart.slice";
 import { Helmet } from 'react-helmet';
 import styles from "./Checkout.module.css"
+import { selectTotalBill } from "../../store/reducers/cart.slice";
+
+const numberFormater = new Intl.NumberFormat('de-DE');
 
 const Checkout = () => {
     const dispatch = useDispatch();
+    const cart = useSelector(state => state.cart);
+    const totalBill = useSelector(selectTotalBill);
+    const shipFee = 30000;
+
     const handleOrder = () => {
         dispatch(clear());
     }
@@ -167,19 +174,15 @@ const Checkout = () => {
                                                 className="col-lg-3 col-md-3 col-sm-12 bold-text black-text small-text uppercase_text">
                                                 thành tiền</th>
                                         </tr>
-                                        <tr>
-                                            <td className="col-lg-3 col-md-3 col-sm-12">COMBO GÀ GIÒN KHÔNG XƯƠNG (3 MIẾNG)
-                                            </td>
-                                            <td className="col-lg-3 col-md-3 col-sm-12">01</td>
-                                            <td className="col-lg-3 col-md-3 col-sm-12">69.000đ</td>
-                                            <td className="col-lg-3 col-md-3 col-sm-12 price-right">69.000đ</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="col-lg-3 col-md-3 col-sm-12">COMBO GÀ GIÒN CAY (3 MIẾNG)</td>
-                                            <td className="col-lg-3 col-md-3 col-sm-12">02</td>
-                                            <td className="col-lg-3 col-md-3 col-sm-12">115.000đ</td>
-                                            <td className="col-lg-3 col-md-3 col-sm-12 price-right">230.000đ</td>
-                                        </tr>
+                                        {cart.map(i => (
+                                            <tr>
+                                                <td className="col-lg-3 col-md-3 col-sm-12">{i.name}
+                                                </td>
+                                                <td className="col-lg-3 col-md-3 col-sm-12">{i.quantity}</td>
+                                                <td className="col-lg-3 col-md-3 col-sm-12">{numberFormater.format(i.price)} đ</td>
+                                                <td className="col-lg-3 col-md-3 col-sm-12 price-right">{numberFormater.format(i.price * i.quantity)} đ</td>
+                                            </tr>
+                                        ))}
                                     </table>
                                 </div>
                             </div>
@@ -195,34 +198,29 @@ const Checkout = () => {
 
                                         <td
                                             className={`col-lg-3 col-md-3 col-sm-12 bold-text ${styles.price_right}`}>
-                                            299.000đ</td>
-                                    </tr>
-                                    <tr>
-                                        <th className="col-lg-4 col-md-3 col-sm-12 black-text small-text uppercase_text">
-                                            giảm giá</th>
-                                        <td className={`col-lg-3 col-md-3 col-sm-12 ${styles.price_right}`}>-19.000đ</td>
+                                            {numberFormater.format(totalBill * 1.1)} đ</td>
                                     </tr>
                                     <tr>
                                         <th className="col-lg-4 col-md-3 col-sm-12 black-text small-text uppercase_text">phí
                                             ship</th>
-                                        <td className={`col-lg-3 col-md-3 col-sm-12 ${styles.price_right}`}>30.000đ</td>
+                                        <td className={`col-lg-3 col-md-3 col-sm-12 ${styles.price_right}`}>{numberFormater.format(shipFee)} đ</td>
                                     </tr>
                                     <tr>
                                         <th
                                             className="col-lg-4 col-md-3 col-sm-12 black-text small-text uppercase_text bold-text">
                                             tổng thanh toán</th>
-                                        <td className={`col-lg-3 col-md-3 col-sm-12 bold-text ${styles.price_right}`}>310.000đ</td>
+                                        <td className={`col-lg-3 col-md-3 col-sm-12 bold-text ${styles.price_right}`}>{numberFormater.format(totalBill * 1.1 + shipFee)} đ</td>
                                     </tr>
                                 </table>
                                 <div className="container">
-                            <div className="row pt-2">
-                                <div className="col-lg-9 col-md-9 col-sm-12">
+                                    <div className="row pt-2">
+                                        <div className="col-lg-9 col-md-9 col-sm-12">
+                                        </div>
+                                        <div className="col-lg-3 col-md-3 col-sm-12">
+                                            <Link to="/thankyou"><div onClick={handleOrder} className="btn btn--login bold-text">Đặt hàng</div></Link>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="col-lg-3 col-md-3 col-sm-12">
-                                    <Link to="/thankyou"><div onClick={handleOrder} className="btn btn--login bold-text">Đặt hàng</div></Link>
-                                </div>
-                            </div>
-                        </div>
                             </div>
                         </div>
                     </div>
