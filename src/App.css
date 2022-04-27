@@ -242,6 +242,7 @@ ul, li {
     color: var(--white-color) !important;
     font-weight: 500;
     margin: -29px 10px !important;
+    text-transform: capitalize;
 }
 
 .nav-link.active {
