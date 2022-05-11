@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import Helmet from "react-helmet";
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import styles from "./Login.module.css"
@@ -7,6 +8,11 @@ import { Link } from "react-router-dom";
 const Login = () => {
     return (
         <>
+            <div>
+                <Helmet>
+                    <title>Pluto | Đăng nhập</title>
+                </Helmet>
+            </div>
             <main className={styles.main_content}>
                 <div className={styles.account_section}>
                     <div className={styles.shopify_section}>
@@ -39,11 +45,11 @@ const Login = () => {
 
 
                                         <div>
-                                        <input className={`${styles.signin_button} button button-second`} value={"Sign in"} />
+                                            <input className={`${styles.signin_button} button button-second`} value={"Sign in"} />
 
                                         </div>
                                         <div>
-                                        <Link to="/account/register"><input className={`${styles.create_account_button} button button-second`} value={"Chưa có tài khoản? Đăng ký ngay"} /></Link>
+                                            <Link to="/account/register"><input className={`${styles.create_account_button} button button-second`} value={"Chưa có tài khoản? Đăng ký ngay"} /></Link>
 
                                         </div>
 

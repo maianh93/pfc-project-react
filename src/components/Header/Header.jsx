@@ -11,6 +11,7 @@ import LoaderInverted from "../Loader";
 import { useEffect } from "react";
 import { useGetproductsByCategoriesIdQuery } from "../../services/product.service";
 import { selectCount } from "../../store/reducers/cart.slice";
+import FallbackAvatars from "../Avatar/Avatar";
 
 const Header = () => {
   const { isFetching, isError } = useGetAllCategoriesQuery();
@@ -18,8 +19,8 @@ const Header = () => {
   const products = useSelector(selectCategoriesWithoutPromotion);
   const promotionCategories = useSelector(state => state.promotions);
   console.log(promotionCategories)
-  
-  if (isFetching ) {
+
+  if (isFetching) {
     return LoaderInverted()
   }
 
@@ -47,9 +48,9 @@ const Header = () => {
                 })}
               </NavDropdown>
               {promotionCategories.map((p) => {
-                  return <NavLink key={p.id} className="nav-link" to={`/categories/${p.id}`}><div>{promotionCategories[0].description}</div></NavLink>
-                })}
-              
+                return <NavLink key={p.id} className="nav-link" to={`/categories/${p.id}`}><div>{promotionCategories[0].description}</div></NavLink>
+              })}
+
               <NavLink className="nav-link" to="/about">Về Chúng Tôi</NavLink>
               <NavLink className="nav-link" to="/stores">Cửa Hàng</NavLink>
             </Nav>
@@ -57,13 +58,13 @@ const Header = () => {
               <NavLink className="nav-link" to="/cart"><i className="bi bi-cart-fill">{count}</i></NavLink>
             </Nav>
             <Nav>
-              <NavLink className="nav-link" to="/account/login"><i className="bi bi-cart-fill">{count}</i></NavLink>
+              <FallbackAvatars />
             </Nav>
 
           </Navbar.Collapse>
         </Container>
       </Navbar>
-                
+
     </div>
   );
 };
