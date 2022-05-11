@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import styles from "./Popup.module.css"
 const numberFormater = new Intl.NumberFormat('de-DE');
-import { update } from "../store/reducers/cart.slice";
+import { update } from "../../store/reducers/cart.slice";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { changePopupProduct } from "../store/reducers/popup.slice"
+import { changePopupProduct } from "../../store/reducers/popup.slice"
 import { style } from "@mui/system";
 
 

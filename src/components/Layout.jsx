@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import { Outlet } from "react-router-dom";
 import { useGetAllCategoriesQuery } from "../services/categories.service";

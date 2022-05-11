@@ -265,3 +265,7 @@ a {
 a:hover {
     color: var(--alert-color) !important;
 }
+
+.cursor {
+    cursor: pointer;
+}

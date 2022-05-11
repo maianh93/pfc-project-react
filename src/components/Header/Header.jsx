@@ -2,15 +2,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
 import { useSelector } from "react-redux";
-import { useGetAllCategoriesQuery } from "../services/categories.service";
-import { selectCategoriesWithPromotion, selectCategoriesWithoutPromotion } from "../store/reducers/categories.slice";
-import { useGetPromotionQuery } from "../services/promotion.service";
+import { useGetAllCategoriesQuery } from "../../services/categories.service";
+import { selectCategoriesWithPromotion, selectCategoriesWithoutPromotion } from "../../store/reducers/categories.slice";
+import { useGetPromotionQuery } from "../../services/promotion.service";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Header.module.css"
-import LoaderInverted from "./Loader";
+import LoaderInverted from "../Loader";
 import { useEffect } from "react";
-import { useGetproductsByCategoriesIdQuery } from "../services/product.service";
-import { selectCount } from "../store/reducers/cart.slice";
+import { useGetproductsByCategoriesIdQuery } from "../../services/product.service";
+import { selectCount } from "../../store/reducers/cart.slice";
 
 const Header = () => {
   const { isFetching, isError } = useGetAllCategoriesQuery();
@@ -47,15 +47,19 @@ const Header = () => {
                 })}
               </NavDropdown>
               {promotionCategories.map((p) => {
-                  return <NavLink className="nav-link" to={`/categories/${p.id}`}><div>{promotionCategories[0].description}</div></NavLink>
+                  return <NavLink key={p.id} className="nav-link" to={`/categories/${p.id}`}><div>{promotionCategories[0].description}</div></NavLink>
                 })}
               
               <NavLink className="nav-link" to="/about">Về Chúng Tôi</NavLink>
               <NavLink className="nav-link" to="/stores">Cửa Hàng</NavLink>
             </Nav>
             <Nav>
-              <NavLink className="nav-link" to="/cart"><i class="bi bi-cart-fill">{count}</i></NavLink>
+              <NavLink className="nav-link" to="/cart"><i className="bi bi-cart-fill">{count}</i></NavLink>
             </Nav>
+            <Nav>
+              <NavLink className="nav-link" to="/account/login"><i className="bi bi-cart-fill">{count}</i></NavLink>
+            </Nav>
+
           </Navbar.Collapse>
         </Container>
       </Navbar>

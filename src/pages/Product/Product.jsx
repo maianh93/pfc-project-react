@@ -10,7 +10,7 @@ import { selectAllProduct } from "../../store/reducers/product.slice";
 import { changePopupProduct } from "../../store/reducers/popup.slice"
 
 import styles from "./Product.module.css"
-import Popup from "../../components/Popup";
+import Popup from "../../components/Popup/Popup";
 import LoaderInverted from "../../components/Loader";
 
 const numberFormater = new Intl.NumberFormat('de-DE');
