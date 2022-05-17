@@ -32,12 +32,17 @@ const Header = () => {
     <div className={styles.main_menu}>
       <Navbar collapseOnSelect expand="lg">
         <Container>
-          <Link to="/">
-            <Navbar.Brand className={styles.navbar_brand}>
+        <Link to="/">
+          <Navbar.Brand className={styles.navbar_brand}>
+
               <img src="/image/logo/header-logo.png" />
-            </Navbar.Brand>
+
+          </Navbar.Brand>
           </Link>
+
+
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
           <Navbar.Collapse className={`${styles.nav_margin} ${styles.nav_item}`} id="responsive-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="Thực Đơn" id="collasible-nav-dropdown">
@@ -47,6 +52,7 @@ const Header = () => {
                   </NavDropdown.Item>
                 })}
               </NavDropdown>
+
               {promotionCategories.map((p) => {
                 return <NavLink key={p.id} className="nav-link" to={`/categories/${p.id}`}><div>{promotionCategories[0].description}</div></NavLink>
               })}
