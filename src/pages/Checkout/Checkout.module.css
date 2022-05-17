@@ -13,7 +13,7 @@ body {
     max-width: 507px;
 }
 
-.order-info-body {
+.order_info_body {
     border: solid 1px var(--red-color);
     display: flex;
     flex-direction: column;

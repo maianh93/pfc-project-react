@@ -16,6 +16,8 @@ import Categories from './pages/Categories/Categories';
 import Cart from './pages/Cart/Cart'
 import Checkout from './pages/Checkout/Checkout'
 import Thankyou from './pages/Thankyou/Thankyou'
+import Login from './pages/Account/Login';
+import Register from './pages/Account/Register';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,6 +33,8 @@ ReactDOM.render(
           <Route path="/cart" element={<Cart />}/>
           <Route path="/checkout" element={<Checkout />}/>
           <Route path="/thankyou" element={<Thankyou />}/>
+          <Route path="/account/login" element={<Login />}/>
+          <Route path="/account/register" element={<Register />}/>
         </Route>
       </Routes>
     </BrowserRouter>

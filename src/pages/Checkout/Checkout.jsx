@@ -23,12 +23,12 @@ const Checkout = () => {
                 <title>Pluto | Check Out</title>
             </Helmet>
         </div>
-        <div className="row pt-5 mt-5">
+        <div className="row pt-5 mt-5 pb-5">
             <div className="col-lg-6 col-md-6 col-sm-12">
                 <div className="dialog">
                     <div className={styles.dialog_body}>
                         <div className={styles.dialog_body_logo}>
-                            <img src="/public/image/logo/footer-logo.png" alt="" />
+                            <img src="/image/logo/footer-logo.png" alt="" />
                         </div>
                         <div className="container">
                             <div className="row pt-2">
@@ -38,7 +38,7 @@ const Checkout = () => {
                                 </div>
                                 <div className="col-lg-9 col-md-9 col-sm-12">
                                     <div className="input-box">
-                                        <input type="text" id="firstname" name="firstname" value="" title="Tên"
+                                        <input type="text" id="firstname" name="firstname" title="Tên"
                                             maxlength="255" className="input-text required-entry" />
                                     </div>
                                 </div>
@@ -126,8 +126,8 @@ const Checkout = () => {
                                 </div>
                                 <div className="col-lg-9 col-md-9 col-sm-12">
                                     <div className="input-box">
-                                        <input type="text" name="phone_number" id="phone_number" value=""
-                                            title="Điện thoại" className="input-text  required-entry" />
+                                        <input type="text" name="phone_number" id="phone_number"
+                                            title="Điện thoại" className="input-text required-entry" />
                                     </div>
                                 </div>
                             </div>
@@ -150,10 +150,10 @@ const Checkout = () => {
                 </div>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
-                <div className="order-info">
-                    <div className="order-info-body">
-                        <div className="dialog-body__logo">
-                            <img src="/public/image/logo/footer-logo.png" alt="" />
+                <div className={styles.order_info}>
+                    <div className={styles.order_info_body}>
+                        <div className={styles.dialog_body_logo}>
+                            <img src="/image/logo/footer-logo.png" alt="" />
                         </div>
                         <div className="container">
                             <div className="row pt-2">

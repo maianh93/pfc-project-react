@@ -1,7 +1,7 @@
 const PromotionDetail1 = () => {
     return (
-        <section class="km-3">
-            <div class="km-1__image">
+        <section className="km-3">
+            <div className="km-1__image">
                 <div>
                     
                 </div>
