@@ -59,6 +59,10 @@ select {
     text-align: end;
 }
 
+.error_alert {
+    color: var(--alert-color)
+}
+
 @media (max-width: 1440px) {
     
 }

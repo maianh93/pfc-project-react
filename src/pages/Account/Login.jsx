@@ -1,4 +1,6 @@
-import { Container } from "@mui/material";
+import React from "react";
+import ReactDOM from "react-dom";
+import { useForm } from "react-hook-form";
 import Helmet from "react-helmet";
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -6,8 +8,17 @@ import styles from "./Login.module.css"
 import { Link } from "react-router-dom";
 
 const Login = () => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors }
+    } = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+    };
     return (
-        <>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <Helmet>
                     <title>Pluto | Đăng nhập</title>
@@ -29,44 +40,57 @@ const Login = () => {
                                     </h1>
                                 </div>
                                 <div id="CustomerLoginForm" className="form-vertical">
-                                    <form>
+                                    <div className={styles.email_input}>
+                                        <MailOutlinedIcon style={{ color: "var(--green-color)" }} />
+                                        <input type="text"
+                                            className="email"
+                                            placeholder="Email"
+                                            {...register("email", { required: true })} />
+                                        {errors.email && <p className={styles.error_alert}>Vui lòng nhập đủ thông tin</p>}                                        </div>
 
 
-                                        <div className={styles.email_input}>
-                                            <MailOutlinedIcon style={{ color: "var(--green-color)" }} />
-                                            <input className={styles.input} type="email" placeholder="E-mail" name="customer[email]" id="CustomerEmail" autoCorrect="off" autoCapitalize="off" autoFocus="" />
-                                        </div>
+                                    <div className={styles.password_input}>
+                                        <LockOutlinedIcon style={{ color: "var(--green-color)" }} />
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            className="user-password"
+                                            placeholder="Mật khẩu"
+                                            {...register("password", {
+                                                required: true,
+                                                minLength: 8,
+                                            })}
+                                        />
+                                        {errors.password?.type == "required" && (
+                                            <p className={styles.error_alert}>Vui lòng nhập mật khẩu</p>
+                                        )}
+                                        {errors.password?.type == "minLength" && (
+                                            <p className={styles.error_alert}>Mật khẩu tối thiểu 6 kí tự</p>
+                                        )}
+                                    </div>
 
 
-                                        <div className={styles.password_input}>
-                                            <LockOutlinedIcon style={{ color: "var(--green-color)" }} />
-                                            <input className={styles.input} type="password" placeholder="Password" name="customer[password]" id="CustomerPassword" />
-                                        </div>
+                                    <div>
+                                        <input type="submit" className={`${styles.signin_button} button button-second`} value={"Sign in"} />
 
+                                    </div>
+                                    <div>
+                                        <Link to="/account/register"><input className={`${styles.create_account_button} button button-second`} value={"Chưa có tài khoản? Đăng ký ngay"} /></Link>
 
-                                        <div>
-                                            <input className={`${styles.signin_button} button button-second`} value={"Sign in"} />
+                                    </div>
 
-                                        </div>
-                                        <div>
-                                            <Link to="/account/register"><input className={`${styles.create_account_button} button button-second`} value={"Chưa có tài khoản? Đăng ký ngay"} /></Link>
+                                    <div className="text-center buttons-set">
+                                        <div className={`${styles.forgot_password} cursor`} id="RecoverPassword">Quên mật khẩu?</div>
 
-                                        </div>
-
-                                        <div className="text-center buttons-set">
-                                            <div className={`${styles.forgot_password} cursor`} id="RecoverPassword">Quên mật khẩu?</div>
-
-                                        </div>
-                                        <input type="hidden" name="return_url" />
-
-                                    </form>
+                                    </div>
+                                    <input type="hidden" name="return_url" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-        </>
+        </form>
 
     );
 };

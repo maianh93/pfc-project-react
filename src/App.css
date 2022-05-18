@@ -96,6 +96,10 @@ img {
     margin: auto;
 }
 
+.text-center {
+    text-align: center !important;
+}
+
 .disable {
     display: none !important;
 }
@@ -316,4 +320,23 @@ a:hover {
     .dropdown-item {
         text-align: left;
     }
+
+    table {
+        width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    table {
+        width: 600px;
+    }
+
+}
+
+@media (max-width: 576px) {
+    table {
+        width: 500px;
+    }
+
 }

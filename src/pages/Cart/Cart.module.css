@@ -2,6 +2,10 @@ body {
     background-color: var(--beige-color);
 }
 
+.shopping_cart {
+    min-height: 700px;
+}
+
 .single_product {
     width: 60%;
     background-color: var(--white-color);

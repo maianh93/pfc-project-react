@@ -1,6 +1,7 @@
 
 import { Link, NavLink } from "react-router-dom";
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from "react-redux";
 import { useGetAllCategoriesQuery } from "../../services/categories.service";
 import { selectCategoriesWithPromotion, selectCategoriesWithoutPromotion } from "../../store/reducers/categories.slice";
@@ -63,8 +64,8 @@ const Header = () => {
             <Nav>
               <NavLink className="nav-link" to="/cart"><i className="bi bi-cart-fill">{count}</i></NavLink>
             </Nav>
-            <Nav>
-              <FallbackAvatars />
+            <Nav className="mb-2" >
+              <FallbackAvatars/>
             </Nav>
 
           </Navbar.Collapse>

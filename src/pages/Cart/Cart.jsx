@@ -131,7 +131,7 @@ const Cart = () => {
     const cartState = useSelector(state => state.cart);
 
     console.log(cartState)
-    return <div>
+    return <div className={styles.shopping_cart}>
         <div>
             <Helmet>
                 <title>Pluto | Giỏ hàng</title>
