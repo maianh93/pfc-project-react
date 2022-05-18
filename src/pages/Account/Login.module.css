@@ -168,3 +168,7 @@
 .forgot_password {
     color: var(--green-color);
 }
+
+.error_alert {
+    color: var(--alert-color)
+}

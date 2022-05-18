@@ -18,6 +18,7 @@ import Checkout from './pages/Checkout/Checkout'
 import Thankyou from './pages/Thankyou/Thankyou'
 import Login from './pages/Account/Login';
 import Register from './pages/Account/Register';
+import UserInfo from './pages/UserInfo/UserInfo'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -35,6 +36,8 @@ ReactDOM.render(
           <Route path="/thankyou" element={<Thankyou />}/>
           <Route path="/account/login" element={<Login />}/>
           <Route path="/account/register" element={<Register />}/>
+          <Route path="/account/info" element={<UserInfo />}/>
+          
         </Route>
       </Routes>
     </BrowserRouter>
