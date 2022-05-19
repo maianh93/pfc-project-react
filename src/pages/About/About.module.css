@@ -161,7 +161,7 @@ body {
   
   /* Media queries - Responsive timeline on screens less than 600px wide */
   @media screen and (max-width: 1300px) {
-    .home__main-image {
+    .home__main_image {
       height: 436px;
       background-position: 50% 80%;
       background-repeat: no-repeat;
@@ -171,7 +171,7 @@ body {
   } 
 
   @media screen and (max-width: 1200px) {
-    .home__main-image {
+    .home__main_image {
       height: 336px;
     }
   } 
@@ -182,7 +182,7 @@ body {
       left: 31px;
     }
 
-    .home__main-image {
+    .home__main_image {
       height: 236px;
     }
     
@@ -260,7 +260,7 @@ body {
   }
 
   @media screen and (max-width: 765px) {
-    .home__main-image {
+    .home__main_image {
       height: 206px;
     }
 
@@ -317,7 +317,7 @@ body {
   } 
 
   @media screen and (max-width: 576px) {
-    .home__main-image {
+    .home__main_image {
       height: 156px;
     }
   } 

@@ -53,15 +53,15 @@ const ItemInCart = (props) => {
             <div className="col-lg-4 col-md-4 col-sm-12">
                 <div className="mt-2">
                     <h4 className={`${styles.info_name} orange-text semi_large_text uppercase-text`}>{props.name}</h4>
-                    <div className="detail ps-2">
+                    <div className={`${styles.detail} ps-2`}>
                         {props.description.map(i => <p>{i}</p>)}
                     </div>
                     <p className="single-price ps-2 bold-text small-text green-text mt-2 mb-3">{props.price} đ</p>
                 </div>
             </div>
-            <div className="col-lg-2 col-md-2 col-sm-12 text-center">
-                <div className="quantity mt-3">
-                    <div className="d-flex">
+            <div className="col-lg-3 col-md-3 col-sm-12 text-center">
+                <div className="text-center">
+                    <div className={`${styles.quantity_group} mt-3}`}>
                         <div className={styles.quantity_icon}>
                             <IndeterminateCheckBoxIcon fontSize="large" className="extra-bold-text orange-text" onClick={handleDecrease} />
                         </div>
@@ -71,16 +71,19 @@ const ItemInCart = (props) => {
                         <div className={styles.quantity_icon}>
                             <AddBoxIcon fontSize="large" className="extra-bold-text orange-text" onClick={handleIncrease} />
                         </div>
+
+                    </div>
+                </div>
+                    
+                <div className="text-center">
+                    <div className={`pt-2 mt-2`}>
+                        <span className={`${styles.notional_price} bold-text semi-large-text red_text`}>{props.total} đ</span>
                     </div>
                 </div>
             </div>
+
             <div className="col-lg-2 col-md-2 col-sm-12 text-center">
-                <div className={`${styles.total_notional_price} pt-5 mt-4`}>
-                    <span className="notional-price pt-2 bold-text semi-large-text red_text">{props.total} đ</span>
-                </div>
-            </div>
-            <div className="col-lg-1 col-md-1 col-sm-12 text-center">
-                <div className="remove pt-5 mt-4">
+                <div className={`${styles.remove} mt-4`}>
                     <span className={styles.close}>
                         <DeleteIcon fontSize="large" onClick={() => handleRemove(props.id)} />
                     </span>

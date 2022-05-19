@@ -46,6 +46,10 @@ body {
     margin: 0 20px;
   }
 
+  .quantity_group {
+      display: flex;
+  }
+
 .close {
     letter-spacing: 3px;
     font-weight: 500;
@@ -138,6 +142,9 @@ body {
     text-align: end;
 }
 
+.remove {
+    padding-top: 50px;
+}
 
 @media (max-width: 1300px) {
     .single_product {
@@ -149,18 +156,6 @@ body {
 
 }
 
-
-@media (max-width: 991px) {
-    .semi-large-text {
-        font-size: 18px;
-    }
-    .small-text {
-        font-size: 16px;
-    }
-    .notional-price {
-        margin-top: 72px !important;
-    }
-}
 
 @media (max-width: 765px) {
     .quantity, .total-notional-price, .remove {
@@ -208,10 +203,47 @@ body {
         margin-bottom: 6px;
         text-align: end;
     }
+
+    .quantity_group {
+        padding-left: 50px;
+    }
+
+    .quantity_icon {
+        transform: translateY(20%);
+        cursor: pointer; 
+        margin: 0 20px;
+      }
+
+      .quantity {
+          margin-left: -35px;
+      }
+
+      .remove {
+          padding-bottom: 20px;
+      }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 991px) {
+    .semi-large-text {
+        font-size: 18px;
+    }
+    .small-text {
+        font-size: 16px;
+    }
+    .notional_price {
+        margin-top: 72px !important;
 
+    }
+    .single_product {
+        text-align: center;
+    }
+
+    .info_name {
+        font-size: 18px;
+    }
+    .quantity_icon {
+        transform: translateY(30%);
+      }
 }
 
 @media (max-width: 521px) {
@@ -232,8 +264,4 @@ body {
     .single_product {
         text-align: center;
     }
-}
-
-@media (max-width: 400px) {
-
 }

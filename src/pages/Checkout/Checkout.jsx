@@ -208,7 +208,7 @@ const Checkout = () => {
                                             <div className="col-lg-9 col-md-9 col-sm-12">
                                             </div>
                                             <div type="submit" className="col-lg-3 col-md-3 col-sm-12">
-                                                <input onClick={handleOrder} type="submit" className="btn btn--login bold-text" value={"Đặt hàng"} />
+                                            <input onClick={handleOrder} type="submit" className="btn btn--login bold-text" value={"Đặt hàng"} />
                                                 {/* <Link to="/thankyou"><div onClick={handleOrder} className="btn btn--login bold-text">Đặt hàng</div></Link> */}
                                             </div>
                                         </div>
