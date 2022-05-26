@@ -68,10 +68,10 @@ const Popup = (props) => {
                 </div>
                 <div className={`container ${styles.beige_background}`}>
                     <div className="row mt-2 p-3">
-                        <p className="quantity-center col-lg-6 col-md-6 col-sm-12 orange-red-text bold-text semi-large-text pt-2">Số lượng
+                        <p className={`${styles.quantity_center} col-lg-6 col-md-6 col-sm-12 orange-red-text bold-text semi-large-text pt-2`}>Số lượng
                         </p>
                         <div className={`col-lg-6 col-md-6 col-sm-12 ${styles.dialog_body_input_volumn_quantity} d-flex`}>
-                            <div className="quantity">
+                            <div className={styles.quantity_group}>
                                 <div className="d-flex">
                                     <div className={styles.cursor}>
                                     <IndeterminateCheckBoxIcon fontSize="large" onClick={handleDecrease} className="extra-bold-text orange-text mt-2"/>
@@ -94,7 +94,7 @@ const Popup = (props) => {
                         <div className="uppercase-text semi-large-text bold-text text-center">Tổng tiền:</div>
                     </div>
                     <div id="pop-up-price" className="col-lg-6 col-md-6 col-sm-12">
-                        <div className="pop-up-price semi-large-text bold-text green-text">
+                        <div className={`${styles.pop_up_price} semi-large-text bold-text green-text`}>
                             {numberFormater.format(currentProductOnPopup ? currentProductOnPopup.prices.VND.price * Number(currentQtty) : 0)} đ
                         </div>
                     </div>

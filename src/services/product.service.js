@@ -6,7 +6,7 @@ const productApi = createApi({
     baseQuery: productsByCategoriesBaseQuery,
     endpoints: (builder) => ({
         getproductsByCategoriesId: builder.query({
-            query: ({ id }) => `byCategoryId?categoryId=${id}`,
+            query: ({ id }) => `products?categoryId=${id}`,
         }),
     }),
 });

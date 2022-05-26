@@ -205,11 +205,11 @@ body {
     }
 
     .quantity_group {
-        padding-left: 50px;
+        padding-left: 176px;
     }
 
     .quantity_icon {
-        transform: translateY(20%);
+        transform: translateY(10%);
         cursor: pointer; 
         margin: 0 20px;
       }
@@ -242,7 +242,7 @@ body {
         font-size: 18px;
     }
     .quantity_icon {
-        transform: translateY(30%);
+        transform: translateY(50%);
       }
 }
 

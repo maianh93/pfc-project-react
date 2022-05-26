@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clear } from "../../store/reducers/cart.slice";
 import { Helmet } from 'react-helmet';
@@ -16,17 +17,27 @@ const Checkout = () => {
         watch,
         formState: { errors }
     } = useForm();
-    const onSubmit = (data) => {
-        console.log(data);
-    };
+
+
+    const navigate = useNavigate();
+
     const dispatch = useDispatch();
-    const cart = useSelector(state => state.cart);
+    const cart = useSelector(state => state.cart);;
     const totalBill = useSelector(selectTotalBill);
     const shipFee = 30000;
+
 
     const handleOrder = () => {
         dispatch(clear());
     }
+
+    
+    const onSubmit = (data) => {
+        console.log(data);
+        navigate("/thankyou");
+        handleOrder();
+    };
+
     return <form onSubmit={handleSubmit(onSubmit)}>
         <div className="container">
             <div>
@@ -38,7 +49,10 @@ const Checkout = () => {
                 <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="dialog">
                         <div className={styles.dialog_body}>
-                            <div className={styles.dialog_body_logo}>
+                            <div className={styles.dialog_body_logo}><datagrid>
+
+
+                            </datagrid>
                                 <img src="/image/logo/footer-logo.png" alt="" />
                             </div>
                             <div className="container">
@@ -208,8 +222,7 @@ const Checkout = () => {
                                             <div className="col-lg-9 col-md-9 col-sm-12">
                                             </div>
                                             <div type="submit" className="col-lg-3 col-md-3 col-sm-12">
-                                            <input onClick={handleOrder} type="submit" className="btn btn--login bold-text" value={"Đặt hàng"} />
-                                                {/* <Link to="/thankyou"><div onClick={handleOrder} className="btn btn--login bold-text">Đặt hàng</div></Link> */}
+                                            <input type="submit" className="btn btn--login bold-text" value={"Đặt hàng"} />
                                             </div>
                                         </div>
                                     </div>
