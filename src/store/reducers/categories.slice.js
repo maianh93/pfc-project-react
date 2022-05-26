@@ -9,7 +9,19 @@ const categoriesSlice = createSlice({
         builder.addMatcher(
             categoriesApi.endpoints.getAllCategories.matchFulfilled,
             (state, action) => {
-                return action.payload;
+                let newCategories = action.payload.map(c => {
+                    let newC = {
+                        ...c,
+                        id: c.categoryId,
+                        descriptions: {
+                            VN: {
+                                text: c.description
+                            }
+                        }
+                    };
+                    return newC;
+                });
+                return newCategories;
             }
         );
     },

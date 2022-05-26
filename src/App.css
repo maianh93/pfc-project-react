@@ -293,6 +293,16 @@ a:hover {
         color: var(--orange-red-color) !important;
     }
 }
+.not-update {
+    opacity: 0.6;
+}
+
+.not-update:hover {
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: var(--white-color);
+    background-color: var(--red-color);
+}
 
 
 

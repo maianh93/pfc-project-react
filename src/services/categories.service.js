@@ -6,7 +6,7 @@ const categoriesApi = createApi({
     baseQuery: categoriesBaseQuery,
     endpoints: (builder) => ({
         getAllCategories: builder.query({
-            query: () => "byIsActive?isActive=Y",
+            query: () => "categories",
         }),
     }),
 });

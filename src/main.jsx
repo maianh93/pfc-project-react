@@ -19,6 +19,10 @@ import Thankyou from './pages/Thankyou/Thankyou'
 import Login from './pages/Account/Login';
 import Register from './pages/Account/Register';
 import UserInfo from './pages/UserInfo/UserInfo'
+import PromotionDetail1 from './pages/PromotionDetails/PromotionDetail1';
+import PromotionDetail2 from './pages/PromotionDetails/PromotionDetail2';
+import PromotionDetail3 from './pages/PromotionDetails/PromotionDetail3';
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -37,7 +41,9 @@ ReactDOM.render(
           <Route path="/account/login" element={<Login />}/>
           <Route path="/account/register" element={<Register />}/>
           <Route path="/account/info" element={<UserInfo />}/>
-          
+          <Route path="/promotion/1" element={<PromotionDetail1 />}/>
+          <Route path="/promotion/2" element={<PromotionDetail2 />}/>
+          <Route path="/promotion/3" element={<PromotionDetail3 />}/>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
+import { Link } from "react-router-dom";
 
 import styles from "./HomeBanner.module.css"
 
@@ -29,20 +30,28 @@ export default function HomeBanner() {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
+            
                 <SwiperSlide className={styles.banner}>
-                    <div className={styles.banner_item}>
-                        <img className={styles.slide_img} src="/image/trang-chu/banner_1.jpg" alt="" />
-                    </div>
+                    <Link to="/promotion/1">
+                        <div className={styles.banner_item}>
+                            <img className={styles.slide_img} src="/image/trang-chu/banner_1.jpg" alt="" />
+                        </div>
+                    </Link>
                 </SwiperSlide>
+            
                 <SwiperSlide className={styles.banner}>
+                    <Link to="/promotion/2">
                     <div className={styles.banner_item}>
                         <img className={styles.slide_img} src="/image/trang-chu/promo_1711_off40.jpg" alt="" />
                     </div>
+                    </Link>
                 </SwiperSlide>
                 <SwiperSlide className={styles.banner}>
+                <Link to="/promotion/3">
                     <div className={styles.banner_item}>
                         <img className={styles.slide_img} src="/image/trang-chu/slider_3.jpg" alt="" />
                     </div>
+                    </Link>
                 </SwiperSlide>
 
             </Swiper>

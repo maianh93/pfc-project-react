@@ -6,7 +6,7 @@ const productApi = createApi({
     baseQuery: promotionBaseQuery,
     endpoints: (builder) => ({
         getPromotion: builder.query({
-            query: () => "promotion"
+            query: () => "293"
         }),
     }),
 });
