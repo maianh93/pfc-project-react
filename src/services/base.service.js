@@ -5,7 +5,7 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // });
 
 const productsByCategoriesBaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3001/",
+  baseUrl: "http://pfc-be-node-dev.ddns.net/",
 });
 
 // const categoriesBaseQuery = fetchBaseQuery({
@@ -13,7 +13,7 @@ const productsByCategoriesBaseQuery = fetchBaseQuery({
 // });
 
 const categoriesBaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3001/",
+  baseUrl: "http://pfc-be-node-dev.ddns.net/",
 });
 
 // const promotionBaseQuery = fetchBaseQuery({
@@ -21,7 +21,7 @@ const categoriesBaseQuery = fetchBaseQuery({
 // });
 
 const promotionBaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3001/categories/",
+  baseUrl: "http://pfc-be-node-dev.ddns.net/categories/",
 });
 
 
