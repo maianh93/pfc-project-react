@@ -30,7 +30,7 @@ const Categories = ({ }) => {
             <div className="container">
             <h2 className="extra_large_text red_text extra-bold-text uppercase_text text-center mt-5">Thực đơn</h2>
                 <div className="row text-center">
-                    {products.map((p) => {
+                    {products.sort((a, b) => a.point - b.point).map((p) => {
                         return <div key={p.id} className="col-lg-4 col-md-4 col-sm-12 mt-5 mb-3">
                             <Link key={p.id} to={`/categories/${p.id}`}>
                                 <div className={styles.main_menu_card_image}>

@@ -9,12 +9,13 @@ import { useGetPromotionQuery } from "../../services/promotion.service";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Header.module.css"
 import LoaderInverted from "../Loader";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useGetproductsByCategoriesIdQuery } from "../../services/product.service";
 import { selectCount } from "../../store/reducers/cart.slice";
 import FallbackAvatars from "../Avatar/Avatar";
 
 const Header = () => {
+  const [expanded, setExpanded] = useState(false);
   const { isFetching, isError } = useGetAllCategoriesQuery();
   const count = useSelector(selectCount);
   const products = useSelector(selectCategoriesWithoutPromotion);
@@ -31,10 +32,10 @@ const Header = () => {
 
   return (
     <div className={styles.main_menu}>
-      <Navbar collapseOnSelect expand="lg">
+      <Navbar collapseOnSelect expand="lg" expanded={expanded}>
         <Container>
         <Link to="/">
-          <Navbar.Brand className={styles.navbar_brand}>
+          <Navbar.Brand className={styles.navbar_brand} onClick={() => setExpanded(false)}>
 
               <img src="/image/logo/header-logo.png" />
 
@@ -42,30 +43,30 @@ const Header = () => {
           </Link>
 
 
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(expanded ? false : "expanded")} />
 
           <Navbar.Collapse className={`${styles.nav_margin} ${styles.nav_item}`} id="responsive-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="Thực Đơn" id="collasible-nav-dropdown">
-                {products.map((p) => {
+                {products.sort((a, b) => a.point - b.point).map((p) => {
                   return <NavDropdown.Item>
-                    <Link to={`/categories/${p.id}`}><div>{p.descriptions.VN.text}</div></Link>
+                    <Link to={`/categories/${p.id}`} onClick={() => setExpanded(false)}><div>{p.descriptions.VN.text}</div></Link>
                   </NavDropdown.Item>
                 })}
               </NavDropdown>
 
               {promotionCategories.map((p) => {
-                return <NavLink key={p.id} className="nav-link" to={`/categories/${p.id}`}><div>{promotionCategories[0].description}</div></NavLink>
+                return <NavLink key={p.id} className="nav-link" to={`/categories/${p.id}`} onClick={() => setExpanded(false)}><div>{promotionCategories[0].description}</div></NavLink>
               })}
 
-              <NavLink className="nav-link" to="/about">Về Chúng Tôi</NavLink>
-              <NavLink className="nav-link" to="/stores">Cửa Hàng</NavLink>
+              <NavLink className="nav-link" to="/about" onClick={() => setExpanded(false)}>Về Chúng Tôi</NavLink>
+              <NavLink className="nav-link" to="/stores" onClick={() => setExpanded(false)}>Cửa Hàng</NavLink>
             </Nav>
             <Nav>
-              <NavLink className="nav-link" to="/cart"><i className="bi bi-cart-fill">{count}</i></NavLink>
+              <NavLink className="nav-link" to="/cart" onClick={() => setExpanded(false)}><i className="bi bi-cart-fill">{count} </i></NavLink>
             </Nav>
-            <Nav className="mb-2" >
-              <FallbackAvatars/>
+            <Nav className="mb-2">
+              <FallbackAvatars />
             </Nav>
 
           </Navbar.Collapse>

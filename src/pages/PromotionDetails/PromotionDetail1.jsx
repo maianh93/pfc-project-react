@@ -36,7 +36,7 @@ const PromotionDetail1 = () => {
                         <li>-         Không áp dụng vào Lễ Tết.</li><br/>
                 </ul>
                 
-                <Link to="/categories"><div className="btn btn--red btn--order bold-text">ĐẶT HÀNG</div></Link>
+                <Link to="/categories/293"><div className="btn btn--red btn--order bold-text">ĐẶT HÀNG</div></Link>
                 <div className={`${styles.page_flex} mt-3 pb-3`}>
                     <div className="previous-page">
                         
