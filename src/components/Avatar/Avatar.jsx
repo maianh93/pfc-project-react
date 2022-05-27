@@ -31,7 +31,7 @@ export default function FallbackAvatars() {
       <NavLink className="nav-link" to="/account/login"><Avatar src="/broken-image.jpg" /></NavLink>
       </IconButton>
 
-      <IconButton
+      {/* <IconButton
         size="large"
         aria-label="account of current user"
         aria-controls="menu-appbar"
@@ -65,7 +65,7 @@ export default function FallbackAvatars() {
       >
         <NavLink to="/account/info" onClick={() => setExpanded(false)}><MenuItem className="text-center" onClick={handleClose}>Thông Tin Tài Khoản</MenuItem></NavLink>
         <NavLink to="/" onClick={() => setExpanded(false)}><MenuItem className="text-center" onClick={handleClose}>Đăng Xuất</MenuItem></NavLink>
-      </Menu>
+      </Menu> */}
     </Stack>
   );
 }
