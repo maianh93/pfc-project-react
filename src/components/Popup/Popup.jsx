@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { changePopupProduct } from "../../store/reducers/popup.slice"
 import { style } from "@mui/system";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Popup = (props) => {
@@ -29,6 +31,9 @@ const Popup = (props) => {
             quantity: Number(currentQtty)
         }));
         dispatch(changePopupProduct({ ...currentProductOnPopup, isDisable: true }))
+        toast.success("Đã thêm sản phẩm vào giỏ hàng!", {
+            position: "top-center",
+        });
     }
 
     const handleChangeInput = (e) => {
@@ -74,13 +79,13 @@ const Popup = (props) => {
                             <div className={styles.quantity_group}>
                                 <div className="d-flex">
                                     <div className={styles.cursor}>
-                                    <IndeterminateCheckBoxIcon fontSize="large" onClick={handleDecrease} className="extra-bold-text orange-text mt-2"/>
+                                        <IndeterminateCheckBoxIcon fontSize="large" onClick={handleDecrease} className="extra-bold-text orange-text mt-2" />
                                     </div>
                                     <div className={styles.quantity}>
                                         <input className={`${styles.quantity_value} orange-text extra-bold-text`} onChange={handleChangeInput} type="text" value={currentQtty} />
                                     </div>
                                     <div className={styles.cursor}>
-                                    <AddBoxIcon fontSize="large" onClick={handleIncrease} className="extra-bold-text orange-text mt-2"/>
+                                        <AddBoxIcon fontSize="large" onClick={handleIncrease} className="extra-bold-text orange-text mt-2" />
                                     </div>
                                 </div>
                             </div>

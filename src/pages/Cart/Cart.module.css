@@ -195,8 +195,9 @@ body {
     }
 
     .remove {
-        padding-bottom: 30px;
+        padding: 0;
     }
+    
 
     .subtotal, .vat, .total, .discount, .amount-of-money {
         font-size: 1.2rem;

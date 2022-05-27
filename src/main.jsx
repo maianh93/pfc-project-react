@@ -23,7 +23,6 @@ import PromotionDetail1 from './pages/PromotionDetails/PromotionDetail1';
 import PromotionDetail2 from './pages/PromotionDetails/PromotionDetail2';
 import PromotionDetail3 from './pages/PromotionDetails/PromotionDetail3';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
