@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
@@ -9,6 +10,9 @@ import styles from "./Categories.module.css"
 import LoaderInverted from "../../components/Loader";
 
 const Categories = ({ }) => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     const { isFetching, error } = useGetAllCategoriesQuery(); // args = undefined
     const products = useSelector(selectCategoriesWithoutPromotion);
 
