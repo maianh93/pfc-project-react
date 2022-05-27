@@ -293,6 +293,7 @@ a:hover {
         color: var(--orange-red-color) !important;
     }
 }
+
 .not-update {
     opacity: 0.6;
 }
@@ -304,7 +305,11 @@ a:hover {
     background-color: var(--red-color);
 }
 
-
+@media screen and (max-width: 1200px) {
+    .navbar-collapse {
+        font-size: 18px;
+    }
+}
 
 @media screen and (max-width: 991px) {
     .navbar-collapse {
@@ -327,6 +332,7 @@ a:hover {
         padding: 20px 0;
         color: var(--orange-color);
     }
+
     .dropdown-item {
         text-align: left;
     }
