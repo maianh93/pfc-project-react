@@ -1,9 +1,13 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import styles from "./About.module.css"
 
 const About = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     return (
         <section className="about">
             <div>

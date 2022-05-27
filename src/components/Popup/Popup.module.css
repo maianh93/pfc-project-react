@@ -1,7 +1,7 @@
 .dialog {
     background-color: var(--beige-color);
     position: absolute;
-    height: 1320px;
+    height: 1772px;
     top: 0px;
     left: 0;
     bottom: 0;
@@ -105,6 +105,11 @@
         background-color: #fff;
         border: 1px solid var(--orange-red-color);
     }
+
+    
+    .dialog {
+        height: 1885px;
+       }
 }
 
 
@@ -137,6 +142,11 @@
         margin: auto;
     }
 
+    
+    .dialog {
+        height: 3945px;
+       }
+
 }
 
 @media (max-width: 576px) {
@@ -163,6 +173,7 @@
     .quantity_group {
         margin: auto;
     }
+
 }
 
 

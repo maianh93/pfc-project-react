@@ -1,11 +1,14 @@
 import React from "react";
+import { useEffect } from "react";
 import Helmet from "react-helmet";
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useState } from 'react'
 import styles from "./Stores.module.css"
 
 const Stores = () => {
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     let stores = [
         {
             id: 1,

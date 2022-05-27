@@ -94,15 +94,15 @@ select {
         padding-top: 12px !important;
     }
 
-    .order-info-body {
+    .order_info_body {
         max-width: 507px;
     }
 
-    .order-info {
+    .order_info {
         padding-top: 20px;
     }
 
-    .confirm-btn {
+    .confirm_btn {
         margin-top: 20px;
     }
 

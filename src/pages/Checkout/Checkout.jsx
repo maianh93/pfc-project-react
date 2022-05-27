@@ -163,7 +163,7 @@ const Checkout = () => {
                             <div className="container">
                                 <div className="row pt-2">
                                     <h3 className="red_text uppercase_text text-center bold-text pb-3">Thông tin đơn hàng</h3>
-                                    <div>
+                                    <div style={{"overflowX": "auto"}}>
                                         <table className="text-center pt-4">
                                             <tr>
                                                 <th
@@ -219,9 +219,9 @@ const Checkout = () => {
                                     </table>
                                     <div className="container">
                                         <div className="row pt-2">
-                                            <div className="col-lg-9 col-md-9 col-sm-12">
+                                            <div className="col-lg-7 col-md-7 col-sm-12">
                                             </div>
-                                            <div type="submit" className="col-lg-3 col-md-3 col-sm-12">
+                                            <div type="submit" className="col-lg-5 col-md-5 col-sm-12">
                                             <input type="submit" className="btn btn--login bold-text" value={"Đặt hàng"} />
                                             </div>
                                         </div>

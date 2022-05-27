@@ -17,6 +17,7 @@ export default function HomeBanner() {
     return (
         <>
             <Swiper
+                rewind={true}
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{

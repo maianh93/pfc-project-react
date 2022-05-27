@@ -65,7 +65,7 @@ const Header = () => {
             <Nav>
               <NavLink className="nav-link" to="/cart" onClick={() => setExpanded(false)}><i className="bi bi-cart-fill">{count} </i></NavLink>
             </Nav>
-            <Nav className="mb-2">
+            <Nav className="mb-2" onClick={() => setExpanded(false)}>
               <FallbackAvatars />
             </Nav>
 

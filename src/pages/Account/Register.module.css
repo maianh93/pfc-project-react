@@ -180,3 +180,9 @@
 .error_alert {
     color: var(--alert-color)
 }
+
+@media (max-width: 991px) {
+    .shopify_section{
+        width: 100%;
+    }
+}

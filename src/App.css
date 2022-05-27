@@ -120,7 +120,7 @@ img {
 
 .btn--orange {
     background-color: var(--orange-color);
-    min-width: 227px;
+    min-width: 173px;
     border: 1px solid var(--orange-color);
 }
 
@@ -142,7 +142,7 @@ img {
     background-color: var(--white-color);
     color: var(--orange-color);
     border: 1px solid var(--orange-color);
-    min-width: 227px;
+    min-width: 212px;
 }
 
 .textarea-text {
@@ -291,6 +291,11 @@ a:hover {
         margin: -29px 10px 10px !important;
         text-transform: capitalize;
         color: var(--orange-red-color) !important;
+    }
+
+    .dropdown-menu.show {
+        margin-top: -2.125rem;
+        padding-left: 20px;
     }
 }
 

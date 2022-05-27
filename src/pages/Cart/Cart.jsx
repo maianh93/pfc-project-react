@@ -105,7 +105,7 @@ const Payment = (props) => {
     return (!count == 0 ? <div>
         <div className={`${styles.option_container} container mt-5`}>
         <div className="row">
-            <div className="confirm-btn col-lg-6 col-md-6 col-sm-12"></div>
+            <div className={`${styles.confirm_btn} col-lg-6 col-md-6 col-sm-12}`}></div>
             <div className={`${styles.confirm_btn} col-lg-6 col-md-6 col-sm-12 mb-3`}><div onClick={handleDeleteAll} id="confirm-btn" className="btn btn--white uppercase_text">Xóa giỏ hàng</div></div>
         </div>
             <li className={`${styles.subtotal} extra-bold-text`}>TỔNG CỘNG<span className={`extra_bold_text red_text ${styles.amount_of_money}`}>{numberFormater.format(totalBill)} VND</span>
@@ -116,7 +116,7 @@ const Payment = (props) => {
         </li> */}
             <li className={`${styles.subtotal} extra-bold-text mt-2`}>TỔNG THANH TOÁN <span className={`red_text ${styles.amount_of_money}`}>{numberFormater.format(totalBill * 1.1)}VND</span></li>
             <div className="row pt-5 pb-5">
-                <div className="continue-order col-lg-6 col-md-6 col-sm-12">
+                <div className={`${styles.continue_order} col-lg-6 col-md-6 col-sm-12`}>
                     <Link to="/categories"><div className="btn btn--white uppercase_text">Tiếp tục đặt hàng</div></Link>
                 </div>
                 <div className={`${styles.confirm_btn} col-lg-6 col-md-6 col-sm-12`}>
