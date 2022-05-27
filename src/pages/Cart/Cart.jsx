@@ -22,7 +22,12 @@ import { selectCount } from "../../store/reducers/cart.slice";
 
 const ItemInCart = (props) => {
     const dispatch = useDispatch();
-    const handleRemove = (id) => dispatch(remove({ id: id }));
+
+    function handleRemove(id) {
+        confirm("Bạn có chắc chắn xóa sản phẩm?")
+            && dispatch(remove({ id: id }));
+    }
+    // const handleRemove = (id) => dispatch(remove({ id: id }));
 
 
     const handleChangeInput = (e) => {
@@ -99,9 +104,12 @@ const Payment = (props) => {
     const dispatch = useDispatch();
     const count = useSelector(selectCount);
     function handleDeleteAll() {
-        confirm("Có chắc chắn xóa toàn bộ giỏ hàng?")
+        confirm("Bạn có chắc chắn xóa toàn bộ giỏ hàng?")
             && dispatch(clear());
     }
+
+
+
     return (!count == 0 ? <div>
         <div className={`${styles.option_container} container mt-5`}>
         <div className="row">
