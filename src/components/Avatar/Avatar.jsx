@@ -63,8 +63,8 @@ export default function FallbackAvatars() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <NavLink to="/account/info"><MenuItem className="text-center" onClick={handleClose}>Thông Tin Tài Khoản</MenuItem></NavLink>
-        <NavLink to="/"><MenuItem className="text-center" onClick={handleClose}>Đăng Xuất</MenuItem></NavLink>
+        <NavLink to="/account/info" onClick={() => setExpanded(false)}><MenuItem className="text-center" onClick={handleClose}>Thông Tin Tài Khoản</MenuItem></NavLink>
+        <NavLink to="/" onClick={() => setExpanded(false)}><MenuItem className="text-center" onClick={handleClose}>Đăng Xuất</MenuItem></NavLink>
       </Menu>
     </Stack>
   );
