@@ -12,4 +12,15 @@ body {
 .main_menu_card_image:hover {
     transform: scale(1.08);
 }
-  
+
+@media (max-width: 991px) {
+    .main_menu_card_image {
+        height: 190px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main_menu_card_image {
+        height: 250px;
+    }
+}
