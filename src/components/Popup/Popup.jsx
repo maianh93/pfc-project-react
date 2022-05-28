@@ -33,13 +33,20 @@ const Popup = (props) => {
         dispatch(changePopupProduct({ ...currentProductOnPopup, isDisable: true }))
         toast.success("Đã thêm sản phẩm vào giỏ hàng!", {
             position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
         });
     }
 
     const handleChangeInput = (e) => {
         let value = e.target.value;
         var reg = /^\d+$/;
-        reg.test(value ? value.toString() : "")
+        reg.test(value ? value.toString() : "") 
             && Number(value) > 0
             && setCurrentQtty(value);
         console.log(value)

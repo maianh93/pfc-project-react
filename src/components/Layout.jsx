@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { useGetAllCategoriesQuery } from "../services/categories.service";
 import { useGetPromotionQuery } from "../services/promotion.service";
 import { ToastContainer } from "react-toastify";
+import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
 
 import LoaderInverted from "./Loader";
 import { useSelector } from "react-redux";
@@ -26,15 +27,16 @@ const Layout = () => {
       <Outlet />
 
       <ToastContainer
-        hideProgressBar={true}
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar
         newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        autoClose={1000}
-        position="bottom-right"
+        transition={Flip}
       />
 
       <Footer />
