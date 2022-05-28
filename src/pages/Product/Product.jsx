@@ -76,7 +76,7 @@ const Product = ({ }) => {
                     )}
                 </div>
                 {!(parseInt(categoryId) === promotionCategories[0].id) && <div>
-                    <h2 className="container extra_large_text black-text extra_bold_text uppercase_text mt-5">Sản phẩm đang khuyến mãi</h2>
+                    <h2 className="container extra_large_text black-text extra_bold_text uppercase_text mt-5">Sản phẩm đang khuyến mại</h2>
                     <div className="row text-center">
                         {products[promotionCategories[0].id].map((p) => {
                             return <div key={p.id} className="col-lg-4 col-md-4 col-sm-12">
