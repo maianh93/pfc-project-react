@@ -47,6 +47,10 @@
     margin-top: 25px;
 }
 
-.footer__social {
+.footer_social {
+    cursor: pointer;
+}
+
+.basic_info {
     cursor: pointer;
 }

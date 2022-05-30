@@ -1,0 +1,188 @@
+.main_content {
+    overflow: hidden;
+}
+
+.CustomerLoginTitle {
+    color: var(--orange-color);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.account_section {
+    position: relative;
+    padding: 70px 0;
+    min-height: 820px;
+    width: 100%;
+    display: table;
+    text-align: center;
+}
+
+.shopify_section{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+}
+
+.shopify_image {
+    background-image: url(/image/login.jpg);
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 1.25rem;
+}
+
+.form_center {
+    max-width: 660px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 0 1.5625rem 1.5625rem;
+    position: relative;
+    z-index: 9;
+}
+
+.form_center::before {
+    content: '';
+    width: 25px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #eaf4e4;
+}
+
+.form_center::after {
+    content: '';
+    width: 100%;
+    height: 25px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background: #eaf4e4;
+}
+
+.box {
+    background: #fff;
+    border: 1px solid #eaf4e4;
+    padding: 2.125rem 4.0625rem 3rem;
+    position: relative;
+}
+
+.page_title {
+    padding: 2.125rem 0;
+    text-align: center;
+}
+
+.input {
+    border: none !important;
+    height: 100%;
+}
+
+.email_input, .password_input {
+    margin-bottom: 1.25rem;
+    border: 1px var(--white-color) solid;
+    background: #eaf4e4;
+}
+
+.email_input input, .password_input input{
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    color: #918879;
+    padding: 1.8125rem 4.375rem 1.5625rem;
+    line-height: 1.75;
+    margin: 0;
+    letter-spacing: -.025em;
+    appearance: none;
+    background: #eaf4e4;
+}
+
+.email_input input:focus, .password_input input:focus {
+    outline: 0;
+}
+
+.signin_button {
+    color: var(--white-color);
+    background-color:  var(--orange-color);
+    border: 2px solid var(--orange-color);
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    padding: 1.5625rem 3.25rem 1.4375rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: .875rem;
+    line-height: 1;
+    letter-spacing: .1em;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    background-clip: border-box;
+    width: 90%;
+    transition: background-color .15s linear 0s,color .15s linear 0s,border .15s linear 0s;
+    overflow: hidden;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.create_account_button {
+    color: var(--orange-color);
+    background-color:  var(--white-color);
+    border: 2px solid var(--orange-color);
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    padding: 1.5625rem 3.25rem 1.4375rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: .875rem;
+    line-height: 1;
+    letter-spacing: .1em;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    background-clip: border-box;
+    width: 90%;
+    transition: background-color .15s linear 0s,color .15s linear 0s,border .15s linear 0s;
+    overflow: hidden;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.create_account_button:hover  {
+    color: #fff;
+    background-color: var(--green-color);
+    border-color: var(--green-color);
+    animation: pulse .25s cubic-bezier(.785,.135,.15,.86);
+    transition: background-color .15s linear 0s,color .15s linear 0s,border .15s linear 0s;
+}
+
+.signin_button:hover {
+    color: var(--white-color);
+    background-color: var(--red-color);
+    border-color: var(--red-color);
+    animation: pulse .25s cubic-bezier(.785,.135,.15,.86);
+    transition: background-color .15s linear 0s,color .15s linear 0s,border .15s linear 0s;
+}
+
+.forgot_password {
+    color: var(--green-color);
+}
+
+.error_alert {
+    color: var(--alert-color)
+}
+
+@media (max-width: 991px) {
+    .shopify_section{
+        width: 100%;
+    }
+}

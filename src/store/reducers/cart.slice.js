@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initCartState = () => {
     try {
-        console.log([...JSON.parse(localStorage.getItem("cartState"))]);
-        return [...JSON.parse(localStorage.getItem("cartState"))];
+        let initState = [...JSON.parse(localStorage.getItem("cartState"))];
+        initState.sort((a, b) => a.id - b.id)
+        console.log("initState", initState);
+        return initState;
     } catch (error) {
         return [];
     }
@@ -16,7 +18,7 @@ const cartSlice = createSlice({
         update: (state, action) => {
             let newState = state.filter((i) => i.id != action.payload.id);
             newState.push(action.payload);
-            newState.sort((a, b) => a - b)
+            newState.sort((a, b) => a.id - b.id)
             localStorage.setItem("cartState", JSON.stringify(newState));
             return newState;
         },
@@ -26,7 +28,7 @@ const cartSlice = createSlice({
             return newState;
 
         },
-        clear: (state) => {
+        clear: () => {
             localStorage.setItem("cartState", JSON.stringify([]));
             return [];
         },
@@ -41,11 +43,7 @@ export const selectCount = (state) =>
 
 export const selectTotalBill = (state) =>
     state.cart
-        .map((item) => ({
-            quantity: item.quantity,
-            product: state.products.find((p) => p.id == item.productId),
-        }))
         .reduce(
-            (total, item) => (total += item.quantity * item.product.price),
+            (total, item) => (total += item.quantity * item.price),
             0
         );

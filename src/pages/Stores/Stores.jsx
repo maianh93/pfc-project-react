@@ -1,9 +1,14 @@
+import React from "react";
+import { useEffect } from "react";
+import Helmet from "react-helmet";
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useState } from 'react'
 import styles from "./Stores.module.css"
 
 const Stores = () => {
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     let stores = [
         {
             id: 1,
@@ -118,6 +123,11 @@ const Stores = () => {
 
     return (
         <section className={styles.store}>
+            <div>
+                <Helmet>
+                    <title>Pluto | Cửa hàng</title>
+                </Helmet>
+            </div>
             <div className={styles.store__image}>
                 <p className={`extra-bold-text large_text red_text uppercase_text text-center`}>Hệ thống {stores.length} cửa hàng trên toàn
                     quốc</p>

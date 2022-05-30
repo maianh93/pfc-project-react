@@ -190,11 +190,20 @@ body {
     .detail-menu__card {
         margin-top: 0 !important;
     }
+    
+    .detail_menu_info_content {
+        height: 126px;
+    }
+  
 }
   
   @media (max-width: 765px) {
     .detail-menu__card {
         margin-top: 50px !important;
+    }
+
+    .detail_menu_info_content {
+        height: 76px;
     }
   
   }

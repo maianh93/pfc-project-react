@@ -1,5 +1,5 @@
 import styles from "./Footer.module.css";
-import "../App.css"
+import "../../App.css"
 
 
 const Footer = () => {
@@ -46,21 +46,21 @@ const Footer = () => {
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
               <div className={`${styles.footer__info} ${styles.white_text} pt-4`}>
                 <h3>THÔNG TIN CƠ BẢN</h3>
-                <a href="">
+                <p className={styles.basic_info} href="">
                   <p>Giới thiệu</p>
-                </a>
-                <a href="">
+                </p>
+                <p className={styles.basic_info} href="">
                   <p>Tin tức</p>
-                </a>
-                <a href="">
+                </p>
+                <p className={styles.basic_info} href="">
                   <p>Nhượng quyền</p>
-                </a>
-                <a href="">
+                </p>
+                <p className={styles.basic_info} href="">
                   <p>Điều khoản sử dụng</p>
-                </a>
-                <a href="">
+                </p>
+                <p className={styles.basic_info} href="">
                   <p>Chính sách bảo mật</p>
-                </a>
+                </p>
               </div>
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">

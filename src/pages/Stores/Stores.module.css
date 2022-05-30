@@ -4,7 +4,7 @@
 
 .store__image {
     /* position: relative; */
-    background-image: url(../public/image/cua-hang/pluto-hn/pluto-timescity.jpg);
+    background-image: url(/image/cua-hang/pluto-hn/pluto-timescity.jpg);
     height: 307px;
     background-position: center;
     background-repeat: no-repeat;
@@ -116,15 +116,15 @@
         padding: 0;
     }
 
-    .store__card-image {
+    .store__card_image {
         height: 205px;
     }
     
 }
 
 @media (max-width: 765px) {
-    .store__card-image {
-        height: 171px;
+    .store__card_image {
+        height: 326px;
     }
 
     .btn--orange {
@@ -142,6 +142,12 @@
     .store__card h3 {
         margin: 15px 0;
         font-weight: 500;
+    }
+}
+
+@media (max-width: 521px) {
+    .store__card_image {
+        height: 230px;
     }
 }
 

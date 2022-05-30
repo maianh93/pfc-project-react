@@ -10,7 +10,31 @@ const productSlice = createSlice({
             productApi.endpoints.getproductsByCategoriesId.matchFulfilled,
             (state, action) => {
                 let categoryId = action.meta.arg.originalArgs.id;
-                return {...state, [categoryId] : action.payload};
+                let convertedProducts = action.payload.map(p => {
+                    let newP = {
+                        id: p.productId,
+                        description: p.description,
+                        imageUrl: p.imageUrl,
+                        isActive: 'Y',
+                        point: p.point,
+                        categoryId: p.categoryId,
+                        descriptions: {
+                            VN: {
+                                text: p.description,
+                            }
+                        },
+                        units: {
+                            VN: [...p.subDesc]
+                        },
+                        prices: {
+                            VND: {
+                                price: p.price
+                            }
+                        }
+                    };
+                    return newP;
+                });
+                return {...state, [categoryId] : convertedProducts};
             }
         );
     },
@@ -22,4 +46,3 @@ export const selectProductById = (id) => (state) =>
     state.products.find((item) => item.id == id);
 
 export const selectAllProduct = (state) => state.products
-

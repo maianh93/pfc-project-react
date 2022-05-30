@@ -13,7 +13,7 @@ body {
     max-width: 507px;
 }
 
-.order-info-body {
+.order_info_body {
     border: solid 1px var(--red-color);
     display: flex;
     flex-direction: column;
@@ -59,6 +59,10 @@ select {
     text-align: end;
 }
 
+.error_alert {
+    color: var(--alert-color)
+}
+
 @media (max-width: 1440px) {
     
 }
@@ -90,15 +94,15 @@ select {
         padding-top: 12px !important;
     }
 
-    .order-info-body {
+    .order_info_body {
         max-width: 507px;
     }
 
-    .order-info {
+    .order_info {
         padding-top: 20px;
     }
 
-    .confirm-btn {
+    .confirm_btn {
         margin-top: 20px;
     }
 

@@ -1,7 +1,7 @@
 .dialog {
     background-color: var(--beige-color);
     position: absolute;
-    height: 1300px;
+    height: 1772px;
     top: 0px;
     left: 0;
     bottom: 0;
@@ -11,6 +11,12 @@
     align-items: center;
     justify-content: center;
     opacity: 0.4;
+    filter: brightness(0.4);
+    transition: opacity 0.2s ease;
+}
+
+.cursor {
+    cursor: pointer;
 }
 
 .dialog_body {
@@ -24,6 +30,7 @@
     background-color: #fff;
     border: 1px solid var(--orange-red-color);
     z-index: 1000;
+    transition: opacity 0.2s ease;
 }
 
 .beige_background {
@@ -57,7 +64,7 @@
 }
 
 
-.input-volumn {
+.input_volumn {
     width: 157px;
     border-color: var(--white-color);
     border: solid 1px var(--orange-red-color);
@@ -86,49 +93,68 @@
 }
 
 @media (max-width: 991px) {
-    .dialog-body {
+    .dialog_body {
         /* display: flex; */
         min-width: 595px;
         flex-direction: column;
         max-width: 732px;
         position: fixed;
         top: 26%;
-        left: 15%;
+        left: 18%;
         padding: 16px;
         background-color: #fff;
         border: 1px solid var(--orange-red-color);
     }
+
+    
+    .dialog {
+        height: 1885px;
+       }
 }
 
 
 @media (max-width: 765px) {
-    .dialog-body {
+    .dialog_body {
         /* display: flex; */
         min-width: 175px;
         flex-direction: column;
         max-width: 732px;
         position: fixed;
-        top: 26%;
-        left: 5%;
+        top: 30%;
+        left: 27%;
         padding: 16px;
         background-color: #fff;
         border: 1px solid var(--orange-red-color);
     }
 
-    .pop-up-price {
+    .pop_up_price {
         text-align: center !important;
     }
 
-    .quantity-center {
+    .quantity_center {
         text-align: center !important;
     }
+
+    .info_name {
+        text-align: center !important;
+    }
+    .quantity_group {
+        margin: auto;
+    }
+
+    
+    .dialog {
+        height: 3945px;
+       }
 
 }
 
 @media (max-width: 576px) {
-    .dialog-body {
+    .dialog_body {
         /* display: flex; */
         max-width: 332px;
+        top: 32%;
+        left: 12%;
 
     }
 
@@ -136,9 +162,18 @@
         padding-left: 27px;
     }
 
-    .info-name {
+    .info_name {
         text-align: center !important;
     }
+    
+    .pop_up_price {
+        text-align: center;
+    }
+
+    .quantity_group {
+        margin: auto;
+    }
+
 }
 
 
